@@ -3,15 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+
+    <title>FORMA STUDIO | Creative Business</title>
+
+    <meta name="description" content="Discover thoughtful digital services and creative solutions with FORMA STUDIO.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f8f5;
+            color: #242923;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: #f8f8f5;
+            border-bottom: 1px solid #e8e8e2;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #71836f;
+        }
+
+        .nav-button {
+            background: #29352b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 27px;
+            cursor: pointer;
+            color: #242923;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 105px 0 115px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: #71836f;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 23px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.08;
+            letter-spacing: -3px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .hero h1 span {
+            color: #7b9078;
+        }
+
+        .hero p {
+            max-width: 570px;
+            margin: 25px auto 32px;
+            color: #777b74;
+            font-size: 17px;
+        }
+
+        .main-button {
+            display: inline-block;
+            background: #29352b;
+            color: white;
+            padding: 15px 28px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .main-button:hover {
+            background: #71836f;
+            transform: translateY(-3px);
+        }
+
+        .hero-art {
+            margin: 70px auto 0;
+            min-height: 230px;
+            max-width: 900px;
+            border-radius: 8px;
+            background: linear-gradient(120deg, #dfe7dd, #b9c9b5, #e9e9df);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-art span {
+            font-size: clamp(55px, 12vw, 125px);
+            color: rgba(41, 53, 43, 0.7);
+            font-weight: 800;
+            letter-spacing: 10px;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            font-size: clamp(30px, 5vw, 43px);
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #777b74;
+            max-width: 550px;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #eeefe9;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-card {
+            min-height: 300px;
+            background: #dce5d9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            color: #60745f;
+        }
+
+        .about-text p {
+            color: #71766e;
+            margin: 18px 0 25px;
+        }
+
+        /* SERVICES */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .service-card {
+            border: 1px solid #e4e5df;
+            border-radius: 7px;
+            padding: 32px 25px;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            border-color: #9cac98;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 22px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .service-card p {
+            color: #777b74;
+            font-size: 14px;
+        }
+
+        /* WHY US */
+
+        .why-us {
+            background: #29352b;
+            color: white;
+            text-align: center;
+        }
+
+        .why-us .section-description {
+            margin: 15px auto 35px;
+            color: #c4cec1;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 45px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #c4cec1;
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact .section-description {
+            margin: 15px auto 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #eeefe9;
+            padding: 30px 0;
+            text-align: center;
+            color: #777b74;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #29352b;
+            letter-spacing: 2px;
+        }
+
+        /* MOBILE DESIGN */
+
+        @media (max-width: 750px) {
+
+            .container {
+                width: 90%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: #f8f8f5;
+                padding: 25px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 22px;
+                border-bottom: 1px solid #e8e8e2;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .hero-art {
+                min-height: 170px;
+                margin-top: 45px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-card {
+                min-height: 210px;
+            }
+
+            .services-grid,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Welcome to My Website!</h1>
+    <!-- NAVIGATION -->
 
-    <p>This is my very first website.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">FORMA.</a>
 
-    <button>Click Me!</button>
+                <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation"
+                    aria-expanded="false">
+                    ☰
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#contact" class="nav-button">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+
+                <div class="eyebrow">Welcome to FORMA STUDIO</div>
+
+                <h1>
+                    Ideas made <span>simple.</span>
+                    Experiences made better.
+                </h1>
+
+                <p>
+                    We believe great things begin with simple ideas.
+                    Discover thoughtful solutions designed to help
+                    your business grow.
+                </p>
+
+                <a href="#services" class="main-button">
+                    Explore Our Services →
+                </a>
+
+                <div class="hero-art">
+                    <span>FORMA</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+
+        <section class="about" id="about">
+            <div class="container about-content">
+
+                <div class="about-card">
+                    F.
+                </div>
+
+                <div class="about-text">
+                    <div class="eyebrow">Who We Are</div>
+
+                    <h2 class="section-heading">
+                        A fresh approach to business.
+                    </h2>
+
+                    <p>
+                        FORMA STUDIO is a creative business concept
+                        built around quality, thoughtful ideas and
+                        meaningful experiences.
+                    </p>
+
+                    <a href="#contact" class="main-button">
+                        Get in Touch →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+
+        <section id="services">
+            <div class="container">
+
+                <div class="eyebrow">What We Offer</div>
+
+                <h2 class="section-heading">
+                    What we do.
+                </h2>
+
+                <p class="section-description">
+                    Explore our services and discover how we can
+                    help bring your ideas to life.
+                </p>
+
+                <div class="services-grid">
+
+                    <div class="service-card">
+                        <div class="service-icon">✳️</div>
+                        <h3>Creative Design</h3>
+                        <p>
+                            Thoughtful visual ideas that help your
+                            brand communicate its identity.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">◇</div>
+                        <h3>Digital Solutions</h3>
+                        <p>
+                            Modern digital experiences designed
+                            around your business needs.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">↗️</div>
+                        <h3>Business Growth</h3>
+                        <p>
+                            Fresh ideas and creative strategies
+                            to help your business move forward.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY US SECTION -->
+
+        <section class="why-us" id="why-us">
+            <div class="container">
+
+                <div class="eyebrow">The FORMA Difference</div>
+
+                <h2 class="section-heading">
+                    Simple. Thoughtful. Different.
+                </h2>
+
+                <p class="section-description">
+                    We believe a good business experience should
+                    be clear, creative and customer-focused.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <h3>01. Quality</h3>
+                        <p>We value care and attention to detail.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>02. Creativity</h3>
+                        <p>We approach ideas with fresh thinking.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>03. Simplicity</h3>
+                        <p>We keep things clear and easy to understand.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+
+        <section class="contact" id="contact">
+            <div class="container">
+
+                <div class="eyebrow">Let's Connect</div>
+
+                <h2 class="section-heading">
+                    Have an idea? Let's talk.
+                </h2>
+
+                <p class="section-description">
+                    Interested in working together?
+                    Get in touch and tell us what you have in mind.
+                </p>
+
+                <a href="mailto:hello@example.com"
+                   class="main-button">
+                    Contact Our Team →
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="container">
+            <strong>FORMA.</strong>
+            <p>© <span id="year"></span> FORMA STUDIO. All rights reserved.</p>
+            <p>Designed with simplicity.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+
+            const isOpen = navLinks.classList.contains("active");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
 
 </body>
 </html>

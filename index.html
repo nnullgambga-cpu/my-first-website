@@ -633,6 +633,53 @@ setTimeout(function(){
 }, 1000);
 </script>
 <!-- END HIDE BLACK BOX -->
+  <!-- MAKE IT ONE BAG - SHADI TO WHITE BAG -->
+<script>
+setTimeout(function(){
+
+  // 1. Find White Bag's add function - save it
+  var whiteAdd = window.addToBag;
+
+  // 2. Force Shadi Bundle button to use White Bag
+  document.querySelectorAll('button').forEach(function(b){
+    var txt = b.innerText.toLowerCase();
+    // Shadi Bundle button says "Add Shadi Bundle" or "Add Bundle"
+    if(txt.includes('shadi') || txt.includes('bundle')){
+      // Remove old click, make new click = add to White Bag
+      b.onclick = function(){
+        // Add Shadi Bundle to SAME White Bag
+        if(whiteAdd){
+          whiteAdd('Shadi Special Bundle', 44999);
+        } else {
+          // If whiteAdd not found, push manually
+          window.bag = window.bag || [];
+          window.bag.push({name:'Shadi Special Bundle', price:44999});
+          if(typeof updateBag === 'function') updateBag();
+          alert('Shadi Special Bundle added to Your Bag!');
+        }
+        // Open White Bag popup so you see it
+        setTimeout(function(){
+          var whiteBag = document.getElementById('bag-popup');
+          if(whiteBag) whiteBag.style.display = 'block';
+        }, 300);
+      };
+      // Change button text to same as others
+      b.innerText = 'Add to Bag 🛍️';
+    }
+  });
+
+  // 3. Also make sure any other product button uses White Bag only
+  // Kill black bag's function if it still exists
+  document.querySelectorAll('div').forEach(function(d){
+    if(d.innerText.includes('Bag (0)') && d.style.position === 'fixed'){
+      d.style.display = 'none';
+    }
+  });
+
+  console.log('Now 1 Bag - Shadi goes to White Bag');
+}, 1000);
+</script>
+<!-- END ONE BAG -->
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

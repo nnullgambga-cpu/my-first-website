@@ -1,625 +1,553 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZUVÉORA | Botanical Tea Boutique</title>
-<meta name="description" content="Discover the botanical world of ZUVÉORA. Explore our premium tea bombs and botanical blends.">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263e32">
+<title>ZUVÉORA — Botanical Bliss</title>
+<meta name="description" content="Discover ZUVÉORA's botanical tea bombs, signature blends and thoughtful gifting.">
 <style>
-:root {
-  --cream:#fbf7f0;
-  --pink:#ead8d2;
-  --green:#354d3d;
-  --gold:#b69a69;
-  --ink:#282b25;
-  --white:#fffefa;
+:root{
+  --forest:#263e32;--forest-2:#385542;--sage:#a8b69b;--cream:#fbf8f1;
+  --paper:#fffefa;--rose:#ead8d2;--gold:#b69a69;--ink:#292d27;--muted:#77796f;
+  --line:#e8e1d5;--shadow:0 18px 55px #263e3212;--radius:18px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
- font-family:Arial,sans-serif;
- background:var(--cream);
- color:var(--ink);
-}
-h1,h2,h3,.brand,.serif{
- font-family:Georgia,serif;
- font-weight:400;
-}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.6 Arial,Helvetica,sans-serif}
+body.locked{overflow:hidden}
+h1,h2,h3,.brand,.serif{font-family:Georgia,'Times New Roman',serif;font-weight:400}
 a{color:inherit;text-decoration:none}
-button{cursor:pointer;font:inherit}
-.topbar{
- background:var(--green);
- color:white;
- text-align:center;
- padding:10px;
- font-size:11px;
- letter-spacing:2px;
+button,input,select{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.announcement{background:var(--forest);color:#fff;text-align:center;padding:9px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.site-header{position:sticky;top:0;z-index:20;background:#fbf8f1ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1240px;margin:auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{color:var(--forest);font-size:26px;letter-spacing:5px;line-height:1.15;text-align:center;white-space:nowrap}
+.brand small{display:block;font:9px Arial;letter-spacing:4px;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:25px;font-size:11px;letter-spacing:1.3px;text-transform:uppercase}
+.nav-links a{padding:8px 0}.nav-links a:hover{color:var(--gold)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.icon-btn{border:1px solid var(--line);background:transparent;color:var(--forest);border-radius:50px;padding:10px 14px;font-size:12px}
+.bag-button{background:var(--forest);color:white;border-color:var(--forest)}
+.bag-count{display:inline-grid;place-items:center;background:#fff;color:var(--forest);border-radius:50%;min-width:20px;height:20px;margin-left:5px;font-size:10px}
+.menu-toggle{display:none}
+.hero{min-height:590px;display:flex;align-items:center;padding:80px max(7%,calc((100vw - 1240px)/2));color:white;background:linear-gradient(90deg,#1f382ee8 0%,#1f382e9a 48%,#1f382e12 100%),linear-gradient(135deg,#71896f,#d7b8a9 55%,#eee0ca);position:relative;overflow:hidden}
+.hero:after{content:"✿";position:absolute;right:9%;top:12%;font-size:clamp(150px,28vw,360px);color:#ffffff20;font-family:Georgia;pointer-events:none}
+.hero-copy{max-width:590px;position:relative;z-index:1}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;color:var(--gold)}
+.hero .eyebrow{color:#e8d6b7}
+.hero h1{font-size:clamp(48px,7vw,86px);line-height:1.02;margin:0;letter-spacing:-1px}
+.hero p{max-width:440px;font-size:14px;line-height:1.9;margin:24px 0 30px;color:#f4f0e9}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--forest);color:white;border:1px solid var(--forest);padding:14px 22px;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;transition:.2s}
+.btn:hover{background:var(--forest-2);transform:translateY(-1px)}
+.btn-outline{background:transparent;border-color:#fff;color:#fff}
+.btn-outline:hover{background:#ffffff20}
+.section{max-width:1240px;margin:auto;padding:82px 28px}
+.section-head{text-align:center;max-width:650px;margin:0 auto 36px}
+.section-title{font-size:clamp(32px,4vw,48px);line-height:1.15;color:var(--forest);margin:0 0 12px}
+.subtitle{font-size:13px;color:var(--muted);line-height:1.8}
+.shop-tools{display:flex;justify-content:center;margin:26px auto 0;max-width:480px}
+.search{width:100%;padding:14px 16px;border:1px solid var(--line);background:#fff;border-radius:3px;outline-color:var(--sage)}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:34px}
+.product-card{background:var(--paper);border:1px solid #eee8dd;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.product-art{height:230px;display:grid;place-items:center;position:relative;overflow:hidden}
+.product-art:before{content:"";width:175px;height:175px;border-radius:50%;background:#ffffff65;position:absolute}
+.product-art.rose{background:linear-gradient(140deg,#d6a7a7,#f1d8d1)}
+.product-art.citrus{background:linear-gradient(140deg,#d8c98a,#b5c4a1)}
+.product-art.spice{background:linear-gradient(140deg,#c38b57,#ead2a4)}
+.product-art.pure{background:linear-gradient(140deg,#b9c8b4,#e9e5d5)}
+.jar{position:relative;z-index:1;width:105px;height:140px;border:2px solid #ffffffa8;border-radius:16px 16px 24px 24px;background:#ffffff55;box-shadow:0 14px 30px #0002;display:grid;place-items:center;text-align:center;color:var(--forest);font:15px Georgia;padding:12px}
+.product-info{text-align:center;padding:20px 16px 22px}
+.product-info h3{font-size:23px;color:var(--forest);margin:0}
+.product-info p{font-size:12px;color:var(--muted);min-height:38px;margin:9px 0 13px}
+.price{font-size:14px;font-weight:bold;color:var(--forest)}
+.pack-select{width:100%;margin:13px 0 10px;padding:10px;border:1px solid var(--line);background:white;color:var(--ink);font-size:12px}
+.add-btn{width:100%;border:0;background:var(--forest);color:white;padding:13px;font-size:10px;letter-spacing:1.6px;text-transform:uppercase}
+.add-btn:hover{background:var(--gold)}
+.empty-state{text-align:center;padding:30px;color:var(--muted);grid-column:1/-1}
+.feature{background:#e9dfd2}
+.feature-inner{max-width:1240px;margin:auto;padding:70px 28px;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.feature-art{min-height:330px;background:linear-gradient(135deg,#a8b69b,#e4c9bd);display:grid;place-items:center;font-size:100px;color:#ffffffa8}
+.feature h2{font-size:clamp(34px,4vw,48px);line-height:1.12;color:var(--forest);margin:0}
+.feature p{font-size:13px;line-height:2;margin:20px 0;color:#5f6259}
+.story{text-align:center;max-width:760px;margin:auto}
+.story p{line-height:2;color:var(--muted);font-size:14px;margin:22px 0 0}
+.gifts{background:#fffefa}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.gift-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center;background:white;padding:25px}
+.gift-icon{font-size:38px}
+.gift-card h3{font-size:24px;color:var(--forest);margin:10px 0}
+.gift-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.gift-price{font-size:25px;font-weight:bold;margin:12px 0;color:var(--forest)}
+.gift-card .btn{width:100%;border-radius:8px}
+.gift-card.featured{background:var(--forest);color:white}
+.gift-card.featured h3,.gift-card.featured .gift-price{color:white}
+.gift-card.featured p{color:#d7e0d5}
+.contact{background:var(--forest);color:white;text-align:center;padding:75px 20px}
+.contact h2{font-size:44px;margin:0}
+.contact p{font-size:13px;line-height:2;margin:15px}
+.contact .btn{margin-top:12px}
+footer{text-align:center;padding:32px 20px;color:#777;font-size:10px;letter-spacing:1.5px}
+.overlay{position:fixed;inset:0;background:#0007;z-index:40;opacity:0;visibility:hidden;transition:.25s}
+.overlay.visible{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;right:0;top:0;height:100dvh;width:min(460px,100%);background:var(--cream);z-index:41;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;padding:25px}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px}
+.cart-head h2{font-size:30px;color:var(--forest);margin:0}
+.close-btn{background:none;border:0;font-size:28px;color:var(--forest)}
+.cart-items{overflow:auto;flex:1;padding:8px 0}
+.cart-empty{text-align:center;color:var(--muted);padding:45px 10px}
+.cart-item{display:grid;grid-template-columns:1fr auto;gap:12px;border-bottom:1px solid var(--line);padding:17px 0;font-size:13px}
+.cart-item strong{display:block;color:var(--forest);font-size:15px}
+.cart-item small{color:var(--muted)}
+.item-total{font-weight:bold;white-space:nowrap}
+.qty-controls{display:flex;align-items:center;gap:10px;margin-top:9px}
+.qty-controls button{border:1px solid var(--line);background:white;width:27px;height:27px;border-radius:50%;color:var(--forest)}
+.remove{border:0!important;background:none!important;color:#9b6158!important;width:auto!important;border-radius:0!important;font-size:10px;letter-spacing:1px;margin-left:8px}
+.cart-footer{border-top:1px solid var(--line);padding-top:16px}
+.delivery-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--forest);font-weight:bold}
+.delivery-select{width:100%;padding:12px;margin:8px 0 12px;background:white;border:1px solid var(--line)}
+.shipping-note{font-size:11px;color:var(--muted);margin:0 0 12px}
+.totals div{display:flex;justify-content:space-between;margin:7px 0;font-size:13px}
+.totals .grand{font-size:17px;font-weight:bold;color:var(--forest);padding-top:8px;border-top:1px solid var(--line)}
+.checkout-btn{width:100%;margin-top:12px;padding:16px}
+.checkout-help{text-align:center;font-size:10px;color:var(--muted);margin:9px 0 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--forest);color:white;padding:12px 18px;border-radius:30px;font-size:12px;z-index:60;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:980px){
+ .nav{padding:14px 20px}.nav-links{gap:14px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .product-art{height:220px}.gift-grid{grid-template-columns:1fr 1fr}
 }
-header{
- position:sticky;top:0;z-index:10;
- background:#fbf7f0ee;
- border-bottom:1px solid #e8dfd2;
+@media(max-width:700px){
+ .menu-toggle{display:inline-flex}.nav{flex-wrap:wrap}
+ .nav-links{display:none;order:3;width:100%;flex-direction:column;padding:12px 0}
+ .nav-links.show{display:flex}.nav-links a{padding:8px}
+ .brand{font-size:22px}.hero{min-height:510px;padding:60px 7%}
+ .hero h1{font-size:54px}.section{padding:60px 18px}
+ .feature-inner{grid-template-columns:1fr;padding:48px 20px;gap:28px}
+ .feature-art{min-height:230px}.gift-grid{grid-template-columns:1fr}
+ .product-grid{gap:12px}.product-info{padding:16px 10px}
+ .product-info h3{font-size:20px}.product-art{height:175px}
+ .jar{width:82px;height:112px;font-size:12px}
+ .product-info p{min-height:48px}.announcement{font-size:9px}
 }
-.nav{
- max-width:1250px;margin:auto;
- padding:18px 5%;
- display:flex;align-items:center;
- justify-content:space-between;gap:20px;
-}
-.brand{
- font-size:27px;
- letter-spacing:5px;
- color:var(--green);
-}
-.brand small{
- display:block;text-align:center;
- font:9px Arial;letter-spacing:4px;
- margin-top:4px;
-}
-.navlinks{
- display:flex;gap:24px;
- font-size:12px;letter-spacing:1px;
-}
-.navlinks a:hover{color:var(--gold)}
-.navright{display:flex;gap:15px;align-items:center}
-.navright button{
- background:none;border:0;color:var(--green);
-}
-.hero{
- min-height:590px;
- background:linear-gradient(100deg,#283e32dd,#283e3233),
- linear-gradient(135deg,#788d70,#d9b8a8,#e9d8c5);
- display:flex;align-items:center;
- padding:70px 9%;
- color:white;
-}
-.hero-content{max-width:600px}
-.eyebrow{
- text-transform:uppercase;
- letter-spacing:4px;font-size:11px;
- margin-bottom:24px;
-}
-.hero h1{font-size:clamp(48px,7vw,82px);line-height:1.08}
-.hero p{
- max-width:430px;line-height:1.9;
- margin:24px 0 32px;font-size:14px;
-}
-.btn{
- display:inline-block;
- padding:16px 27px;
- background:var(--green);
- color:white;border:1px solid var(--green);
- font-size:11px;letter-spacing:2px;
- text-transform:uppercase;
-}
-.btn:hover{background:#50694f}
-.btn.light{background:transparent;border-color:white}
-.section{
- max-width:1250px;margin:auto;
- padding:85px 5%;
-}
-.center{text-align:center}
-.section-title{
- font-size:clamp(32px,4vw,47px);
- color:var(--green);margin-bottom:15px;
-}
-.subtitle{
- color:#827d70;font-size:13px;
- line-height:1.8;
-}
-.products{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:22px;margin-top:45px;
-}
-.product-card{background:var(--white);padding-bottom:24px}
-.product-art{
- height:245px;
- display:flex;align-items:center;
- justify-content:center;
- position:relative;overflow:hidden;
-}
-.product-art:before{
- content:"";position:absolute;
- width:180px;height:180px;
- border-radius:50%;background:#ffffff65;
-}
-.jar{
- z-index:1;width:105px;height:145px;
- border:2px solid #ffffffaa;
- border-radius:18px 18px 25px 25px;
- background:#ffffff48;
- box-shadow:0 12px 30px #0002;
- display:flex;align-items:center;
- justify-content:center;
- text-align:center;
- font-family:Georgia,serif;
- color:#354d3d;
- padding:10px;
- font-size:15px;
-}
-.rose{background:linear-gradient(140deg,#d6a7a7,#f1d8d1)}
-.citrus{background:linear-gradient(140deg,#d8c98a,#b5c4a1)}
-.spice{background:linear-gradient(140deg,#c38b57,#ead2a4)}
-.pure{background:linear-gradient(140deg,#b9c8b4,#e9e5d5)}
-.product-info{padding:20px 16px 0;text-align:center}
-.product-info h3{font-size:22px;color:var(--green)}
-.product-info p{
- font-size:12px;color:#827d70;
- line-height:1.7;margin:10px 0;
- min-height:40px;
-}
-.price{color:var(--green);font-weight:bold;font-size:14px}
-.product-info select{
- margin:15px 0 12px;padding:10px;
- width:100%;border:1px solid #ded7c9;
- background:white;color:var(--ink);
-}
-.add{
- width:100%;padding:13px;
- border:0;background:var(--green);
- color:white;font-size:10px;
- letter-spacing:2px;
-}
-.add:hover{background:var(--gold)}
-.discovery{
- background:#e8ddd0;
- display:grid;grid-template-columns:1fr 1fr;
- align-items:center;gap:50px;
- padding:70px 9%;
-}
-.discovery-art{
- min-height:320px;
- background:linear-gradient(135deg,#a8b69b,#e4c9bd);
- display:grid;place-items:center;
- font-size:70px;
-}
-.discovery h2{font-size:43px;color:var(--green)}
-.discovery p{line-height:1.9;font-size:13px;margin:20px 0}
-.story{max-width:750px;margin:auto;text-align:center}
-.story p{line-height:2;color:#777367;font-size:14px;margin-top:22px}
-.contact{
- background:var(--green);color:white;
- text-align:center;padding:75px 20px;
-}
-.contact h2{font-size:42px}
-.contact p{font-size:13px;line-height:2;margin:18px}
-.contact a{color:#ead7b7}
-footer{
- padding:35px 5%;text-align:center;
- font-size:11px;letter-spacing:1px;
- color:#777;
-}
-.cart-panel{
- position:fixed;inset:0;background:#0007;
- z-index:30;display:none;justify-content:flex-end;
-}
-.cart-panel.open{display:flex}
-.cart{
- background:var(--cream);width:min(430px,100%);
- height:100%;padding:28px;overflow:auto;
-}
-.cart-head{display:flex;justify-content:space-between}
-.cart-head h2{font-size:30px;color:var(--green)}
-.cart-head button{border:0;background:none;font-size:25px}
-.cart-item{
- padding:18px 0;border-bottom:1px solid #ddd;
- font-size:13px;line-height:2;
-}
-.cart-item button{border:0;background:none;color:#995c50}
-.total{padding:24px 0;font-weight:bold}
-.checkout{width:100%}
-.search{
- width:100%;max-width:450px;
- padding:14px;border:1px solid #ddd;
- background:white;margin:30px auto 0;
- display:block;
-}
-.empty{padding:25px;text-align:center;color:#888}
-
-/* NEW - Quantity buttons */
-.qty-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:8px;
-}
-.qty-btn{
-  width:28px;height:28px;
-  border:1px solid #354d3d !important;
-  border-radius:50%;
-  color:#354d3d !important;
-  font-size:16px;
-  line-height:1;
-  display:flex;align-items:center;justify-content:center;
-}
-.qty-btn:hover{background:#354d3d;color:white !important}
-.qty-num{font-weight:bold;min-width:18px;text-align:center}
-.remove-btn{margin-left:auto;font-size:11px;letter-spacing:1px}
-
-@media(max-width:850px){
- .products{grid-template-columns:repeat(2,1fr)}
- .navlinks{gap:12px}
- .discovery{gap:20px}
-}
-@media(max-width:560px){
- .nav{flex-wrap:wrap;justify-content:center}
- .navlinks{width:100%;justify-content:center;flex-wrap:wrap;font-size:10px}
- .hero{min-height:500px;padding:55px 7%}
- .products{gap:12px}
- .product-art{height:185px}
- .jar{width:85px;height:120px}
- .discovery{grid-template-columns:1fr;padding:45px 7%}
- .discovery h2{font-size:35px}
- .section{padding:60px 5%}
+@media(max-width:380px){
+ .nav-actions{gap:6px}.icon-btn{padding:9px 10px}
+ .brand{letter-spacing:3px}.product-grid{grid-template-columns:1fr}
+ .product-art{height:220px}
 }
 </style>
 </head>
+<body>
+<div class="announcement">A botanical experience · made to be discovered</div>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <a href="#home" class="brand">ZUVÉORA<small>BOTANICAL BLISS</small></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a><a href="#shop">Shop</a><a href="#gifts">Gifting</a><a href="#story">Our Story</a><a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions"><button class="icon-btn bag-button" id="openCart">Bag <span class="bag-count" id="bagCount">0</span></button></div>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home"><div class="hero-copy">
+ <div class="eyebrow">A little ritual, a lot of magic</div>
+ <h1>Bloom into<br>your bliss.</h1>
+ <p>Beautiful botanical tea bombs, thoughtfully blended to turn an ordinary cup into a moment worth keeping.</p>
+ <a class="btn btn-outline" href="#shop">Discover the blends ↗</a>
+</div></section>
 
+<section class="section" id="shop">
+ <div class="section-head"><div class="eyebrow">Made with botanicals</div><h2 class="section-title">Find your favourite ritual.</h2><p class="subtitle">Choose your blend, choose your pack, and let the magic steep.</p>
+  <div class="shop-tools"><input class="search" id="search" type="search" placeholder="Search blends…" aria-label="Search blends"></div>
+ </div>
+ <div class="product-grid" id="products"></div>
+</section>
+
+<section class="feature"><div class="feature-inner">
+ <div class="feature-art" aria-hidden="true">🌿</div>
+ <div><div class="eyebrow">The ZUVÉORA experience</div><h2>More than tea.<br>A moment for you.</h2><p>Every blend is inspired by nature's quiet beauty. From floral notes to warming spices, our tea bombs are made to bring a little joy, colour and calm to your day.</p><a class="btn" href="#story">Our story ↗</a></div>
+</div></section>
+
+<section class="section" id="story"><div class="story"><div class="eyebrow">Rooted in little rituals</div><h2 class="section-title">A softer kind of everyday.</h2><p>ZUVÉORA was created for the moments that deserve to be cherished — a slow morning, a thoughtful gift, a conversation that runs late. We believe botanical blends can make ordinary days feel beautifully intentional.</p></div></section>
+
+<section class="section gifts" id="gifts"><div class="section-head"><div class="eyebrow">Thoughtful by nature</div><h2 class="section-title">Gifts that bloom.</h2><p class="subtitle">Little luxuries for birthdays, celebrations and the people you love.</p></div>
+<div class="gift-grid">
+ <article class="gift-card"><div class="gift-icon">🌸</div><h3>Mini Bloom Box</h3><p>4 tea bombs · a sweet little surprise</p><div class="gift-price">Rs. 749</div><button class="btn gift-add" data-name="Mini Bloom Box" data-price="749">Add to bag</button></article>
+ <article class="gift-card featured"><div class="gift-icon">🌿</div><h3>Birthday Blast Box</h3><p>8 tea bombs · birthday-ready gifting</p><div class="gift-price">Rs. 1,999</div><button class="btn gift-add" data-name="Birthday Blast Box" data-price="1999" style="background:white;color:#263e32;border-color:white">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">🎁</div><h3>Premium Shaadi Hamper</h3><p>4 boxes · 16 normal tea bombs<br>Fancy box, ribbon & dried flowers</p><div class="gift-price">Rs. 3,999</div><p>For the dulhan or close family</p><button class="btn gift-add" data-name="Premium Shaadi Hamper" data-price="3999">Add to bag</button></article>
+</div>
+</section>
+
+<section class="section" id="bundles"><div class="section-head"><div class="eyebrow">Limited-time · Shaadi season</div><h2 class="section-title">Function Bundles</h2><p class="subtitle">50 boxes per pack · bulk gifting made easy</p></div>
+<div class="gift-grid">
+ <article class="gift-card"><div class="gift-icon">💍</div><h3>Shadi Special</h3><p>50 boxes · premium mix</p><div class="gift-price">Rs. 44,999</div><p>Rs. 899 per box</p><button class="btn gift-add" data-name="Shadi Special Bundle — 50 Boxes" data-price="44999">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">💛</div><h3>Mehndi Pack</h3><p>50 boxes · yellow theme</p><div class="gift-price">Rs. 34,999</div><p>Rs. 699 per box</p><button class="btn gift-add" data-name="Mehndi Pack — 50 Boxes" data-price="34999">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">✨</div><h3>Walima Pack</h3><p>50 boxes · elegant premium</p><div class="gift-price">Rs. 39,999</div><p>Rs. 799 per box</p><button class="btn gift-add" data-name="Walima Pack — 50 Boxes" data-price="39999">Add to bag</button></article>
+</div></section>
+
+<section class="contact" id="contact"><div class="eyebrow">We would love to hear from you</div><h2>Let's Connect.</h2><p>Questions, orders or collaborations?</p><p id="contactInfo">Message us on WhatsApp to place an order.</p><a class="btn btn-outline" id="contactWhatsApp" href="#contact">Contact us on WhatsApp</a></section>
+</main>
+<footer>ZUVÉORA · BOTANICAL BLISS<br><br>© <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+ <div class="cart-head"><h2>Your Bag</h2><button class="close-btn" id="closeCart" aria-label="Close bag">×</button></div>
+ <div class="cart-items" id="cartItems"></div>
+ <div class="cart-footer">
+  <label class="delivery-label" for="delivery">Delivery method</label>
+  <select class="delivery-select" id="delivery">
+   <option value="150">Local Rider — Sadiqabad (Rs. 150)</option>
+   <option value="250">Rahim Yar Khan (Rs. 250)</option>
+   <option value="300">TCS — All Pakistan (Rs. 300)</option>
+   <option value="0">Pickup — Free</option>
+  </select>
+  <p class="shipping-note" id="shippingNote">Free delivery on product orders of Rs. 2,500 or more (confirm availability).</p>
+  <div class="totals" id="totals"></div>
+  <button class="btn checkout-btn" id="checkout">Order on WhatsApp ↗</button>
+  <p class="checkout-help">Your order opens in WhatsApp for confirmation.</p>
+ </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* IMPORTANT: Replace this with your real WhatsApp number in international format,
+   digits only (Pakistan example: 923001234567). Never include +, spaces or dashes. */
+const CONFIG = { whatsapp: "923000000000", freeDeliveryThreshold: 2500 };
+
+const PACKS = [
+ {name:"1 Tea Bomb",price:199},
+ {name:"1 Box · 4 Tea Bombs",price:749},
+ {name:"2 Boxes · 8 Tea Bombs",price:1449},
+ {name:"4 Boxes · 16 Tea Bombs",price:2799},
+ {name:"6 Boxes · 24 Tea Bombs",price:4099},
+ {name:"12 Boxes · 48 Tea Bombs",price:7999}
+];
+const PRODUCTS = [
+ {id:"rose",name:"Rose Bloom",description:"Rose · Hibiscus · Chamomile",color:"rose",symbol:"ROSE BLOOM"},
+ {id:"citrus",name:"Citrus Bliss",description:"Lemon · Mint · Ginger",color:"citrus",symbol:"CITRUS BLISS"},
+ {id:"spice",name:"Golden Spice",description:"Cinnamon · Cardamom · Apple",color:"spice",symbol:"GOLDEN SPICE"},
+ {id:"pure",name:"Pure Essence",description:"Our sugar-free botanical blend",color:"pure",symbol:"PURE ESSENCE"}
+];
+const $ = (id)=>document.getElementById(id);
+let cart=[];
+const money=(n)=>"Rs. "+Number(n).toLocaleString("en-PK");
+function safeText(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function renderProducts(){
+ const query=$("search").value.trim().toLowerCase();
+ const filtered=PRODUCTS.filter(p=>(p.name+" "+p.description).toLowerCase().includes(query));
+ $("products").innerHTML=filtered.map(p=>`
+ <article class="product-card">
+  <div class="product-art ${p.color}"><div class="jar">${p.symbol}</div></div>
+  <div class="product-info"><h3>${p.name}</h3><p>${p.description}</p>
+  <div class="price">From ${money(PACKS[0].price)}</div>
+  <label class="sr-only" for="pack-${p.id}">Choose pack for ${p.name}</label>
+  <select class="pack-select" id="pack-${p.id}">${PACKS.map((pack,i)=>`<option value="${i}">${pack.name} — ${money(pack.price)}</option>`).join("")}</select>
+  <button class="add-btn" data-product="${p.id}">Add to bag</button></div></article>`).join("")||'<div class="empty-state">No blends found. Try another search.</div>';
+}
+function addItem(key,name,pack,price){
+ const existing=cart.find(i=>i.key===key);
+ if(existing)existing.qty++;
+ else cart.push({key,name,pack,price:Number(price),qty:1});
+ renderCart();openBag();showToast(name+" added to your bag");
+}
+function addProduct(id){
+ const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
+ const index=Number($("pack-"+id).value),pack=PACKS[index];
+ addItem(p.id+"-"+index,p.name,pack.name,pack.price);
+}
+function subtotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0)}
+function shipping(){
+ const chosen=Number($("delivery").value);
+ return subtotal()>=CONFIG.freeDeliveryThreshold && chosen>0 ? 0 : chosen;
+}
+function renderCart(){
+ const count=cart.reduce((s,i)=>s+i.qty,0);$("bagCount").textContent=count;
+ $("cartItems").innerHTML=cart.length?cart.map((item,i)=>`
+ <div class="cart-item"><div><strong>${safeText(item.name)}</strong><small>${safeText(item.pack)} · ${money(item.price)} each</small>
+ <div class="qty-controls"><button data-qty="${i}" data-delta="-1" aria-label="Decrease quantity">−</button><span>${item.qty}</span><button data-qty="${i}" data-delta="1" aria-label="Increase quantity">+</button><button class="remove" data-remove="${i}">REMOVE</button></div></div><div class="item-total">${money(item.price*item.qty)}</div></div>`).join(""):'<div class="cart-empty">Your bag is waiting for something lovely. 🌿</div>';
+ const ship=shipping();
+ $("totals").innerHTML=`<div><span>Subtotal</span><span>${money(subtotal())}</span></div><div><span>Delivery</span><span>${ship===0?"FREE":money(ship)}</span></div><div class="grand"><span>Total</span><span>${money(subtotal()+ship)}</span></div>`;
+ $("shippingNote").textContent=subtotal()>=CONFIG.freeDeliveryThreshold?"Free delivery applied to this order (confirm delivery coverage).":"Free delivery on product orders of Rs. "+CONFIG.freeDeliveryThreshold.toLocaleString()+" or more (confirm availability).";
+}
+function openBag(){ $("overlay").classList.add("visible");$("cartDrawer").classList.add("open");$("cartDrawer").setAttribute("aria-hidden","false");document.body.classList.add("locked");$("closeCart").focus();}
+function closeBag(){ $("overlay").classList.remove("visible");$("cartDrawer").classList.remove("open");$("cartDrawer").setAttribute("aria-hidden","true");document.body.classList.remove("locked");}
+function showToast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove("show"),2200);}
+function checkout(){
+ if(!cart.length){showToast("Your bag is empty.");return;}
+ if(!CONFIG.whatsapp||CONFIG.whatsapp==="923000000000"){alert("Please replace the demo WhatsApp number in CONFIG before taking real orders.");return;}
+ const lines=cart.map(i=>`${i.qty} × ${i.name} (${i.pack}) — ${money(i.price*i.qty)}`).join("\n");
+ const message=`Hello ZUVÉORA! I'd like to place an order:\n\n${lines}\n\nSubtotal: ${money(subtotal())}\nDelivery: ${shipping()===0?"FREE":money(shipping())}\nTotal: ${money(subtotal()+shipping())}\n\nPlease confirm my order and delivery details.`;
+ const url="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(message);
+ window.open(url,"_blank","noopener,noreferrer");
+}
+$("products").addEventListener("click",e=>{const b=e.target.closest("[data-product]");if(b)addProduct(b.dataset.product)});
+document.querySelectorAll(".gift-add").forEach(b=>b.addEventListener("click",()=>addItem("gift-"+b.dataset.name,b.dataset.name,"Gift / bundle",Number(b.dataset.price))));
+$("search").addEventListener("input",renderProducts);
+$("openCart").addEventListener("click",openBag);$("closeCart").addEventListener("click",closeBag);$("overlay").addEventListener("click",closeBag);
+$("delivery").addEventListener("change",renderCart);$("checkout").addEventListener("click",checkout);
+$("cartItems").addEventListener("click",e=>{
+ const q=e.target.closest("[data-qty]"),r=e.target.closest("[data-remove]");
+ if(q){const i=Number(q.dataset.qty);cart[i].qty+=Number(q.dataset.delta);if(cart[i].qty<=0)cart.splice(i,1);renderCart();}
+ if(r){cart.splice(Number(r.dataset.remove),1);renderCart();}
+});
+$("menuToggle").addEventListener("click",()=>$("navLinks").classList.toggle("show"));
+$("navLinks").addEventListener("click",e=>{if(e.target.closest("a"))$("navLinks").classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBag()});
+$("year").textContent=new Date().getFullYear();
+renderProducts();renderCart();
+if(CONFIG.whatsapp&&CONFIG.whatsapp!=="923000000000"){$("contactWhatsApp").href="https://wa.me/"+CONFIG.whatsapp;$("contactInfo").textContent="Reach us directly on WhatsApp for orders and collaborations.";}
+</script>
+</body>
+</html>## PART 1 — Copy this first
+
+<CodeBlock language="html" editable>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263e32">
+<title>ZUVÉORA — Botanical Bliss</title>
+<meta name="description" content="Discover ZUVÉORA's botanical tea bombs, signature blends and thoughtful gifting.">
+<style>
+:root{
+--forest:#263e32;--forest-2:#385542;--sage:#a8b69b;--cream:#fbf8f1;
+--paper:#fffefa;--rose:#ead8d2;--gold:#b69a69;--ink:#292d27;--muted:#77796f;
+--line:#e8e1d5;--shadow:0 18px 55px #263e3212;--radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.6 Arial,Helvetica,sans-serif}
+body.locked{overflow:hidden}
+h1,h2,h3,.brand,.serif{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.announcement{background:var(--forest);color:#fff;text-align:center;padding:9px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.site-header{position:sticky;top:0;z-index:20;background:#fbf8f1ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1240px;margin:auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{color:var(--forest);font-size:26px;letter-spacing:5px;line-height:1.15;text-align:center;white-space:nowrap}
+.brand small{display:block;font:9px Arial;letter-spacing:4px;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:25px;font-size:11px;letter-spacing:1.3px;text-transform:uppercase}
+.nav-links a{padding:8px 0}.nav-links a:hover{color:var(--gold)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.icon-btn{border:1px solid var(--line);background:transparent;color:var(--forest);border-radius:50px;padding:10px 14px;font-size:12px}
+.bag-button{background:var(--forest);color:white;border-color:var(--forest)}
+.bag-count{display:inline-grid;place-items:center;background:#fff;color:var(--forest);border-radius:50%;min-width:20px;height:20px;margin-left:5px;font-size:10px}
+.menu-toggle{display:none}
+.hero{min-height:590px;display:flex;align-items:center;padding:80px max(7%,calc((100vw - 1240px)/2));color:white;background:linear-gradient(90deg,#1f382ee8 0%,#1f382e9a 48%,#1f382e12 100%),linear-gradient(135deg,#71896f,#d7b8a9 55%,#eee0ca);position:relative;overflow:hidden}
+.hero:after{content:"✿";position:absolute;right:9%;top:12%;font-size:clamp(150px,28vw,360px);color:#ffffff20;font-family:Georgia;pointer-events:none}
+.hero-copy{max-width:590px;position:relative;z-index:1}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;color:var(--gold)}
+.hero .eyebrow{color:#e8d6b7}
+.hero h1{font-size:clamp(48px,7vw,86px);line-height:1.02;margin:0;letter-spacing:-1px}
+.hero p{max-width:440px;font-size:14px;line-height:1.9;margin:24px 0 30px;color:#f4f0e9}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--forest);color:white;border:1px solid var(--forest);padding:14px 22px;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;transition:.2s}
+.btn:hover{background:var(--forest-2);transform:translateY(-1px)}
+.btn-outline{background:transparent;border-color:#fff;color:#fff}
+.btn-outline:hover{background:#ffffff20}
+.section{max-width:1240px;margin:auto;padding:82px 28px}
+.section-head{text-align:center;max-width:650px;margin:0 auto 36px}
+.section-title{font-size:clamp(32px,4vw,48px);line-height:1.15;color:var(--forest);margin:0 0 12px}
+.subtitle{font-size:13px;color:var(--muted);line-height:1.8}
+.shop-tools{display:flex;justify-content:center;margin:26px auto 0;max-width:480px}
+.search{width:100%;padding:14px 16px;border:1px solid var(--line);background:#fff;border-radius:3px;outline-color:var(--sage)}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:34px}
+.product-card{background:var(--paper);border:1px solid #eee8dd;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.product-art{height:230px;display:grid;place-items:center;position:relative;overflow:hidden}
+.product-art:before{content:"";width:175px;height:175px;border-radius:50%;background:#ffffff65;position:absolute}
+.product-art.rose{background:linear-gradient(140deg,#d6a7a7,#f1d8d1)}
+.product-art.citrus{background:linear-gradient(140deg,#d8c98a,#b5c4a1)}
+.product-art.spice{background:linear-gradient(140deg,#c38b57,#ead2a4)}
+.product-art.pure{background:linear-gradient(140deg,#b9c8b4,#e9e5d5)}
+.jar{position:relative;z-index:1;width:105px;height:140px;border:2px solid #ffffffa8;border-radius:16px 16px 24px 24px;background:#ffffff55;box-shadow:0 14px 30px #0002;display:grid;place-items:center;text-align:center;color:var(--forest);font:15px Georgia;padding:12px}
+.product-info{text-align:center;padding:20px 16px 22px}
+.product-info h3{font-size:23px;color:var(--forest);margin:0}
+.product-info p{font-size:12px;color:var(--muted);min-height:38px;margin:9px 0 13px}
+.price{font-size:14px;font-weight:bold;color:var(--forest)}
+.pack-select{width:100%;margin:13px 0 10px;padding:10px;border:1px solid var(--line);background:white;color:var(--ink);font-size:12px}
+.add-btn{width:100%;border:0;background:var(--forest);color:white;padding:13px;font-size:10px;letter-spacing:1.6px;text-transform:uppercase}
+.add-btn:hover{background:var(--gold)}
+.empty-state{text-align:center;padding:30px;color:var(--muted);grid-column:1/-1}
+.feature{background:#e9dfd2}
+.feature-inner{max-width:1240px;margin:auto;padding:70px 28px;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.feature-art{min-height:330px;background:linear-gradient(135deg,#a8b69b,#e4c9bd);display:grid;place-items:center;font-size:100px;color:#ffffffa8}
+.feature h2{font-size:clamp(34px,4vw,48px);line-height:1.12;color:var(--forest);margin:0}
+.feature p{font-size:13px;line-height:2;margin:20px 0;color:#5f6259}
+.story{text-align:center;max-width:760px;margin:auto}
+.story p{line-height:2;color:var(--muted);font-size:14px;margin:22px 0 0}
+.gifts{background:#fffefa}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.gift-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center;background:white;padding:25px}
+.gift-icon{font-size:38px}
+.gift-card h3{font-size:24px;color:var(--forest);margin:10px 0}
+.gift-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.gift-price{font-size:25px;font-weight:bold;margin:12px 0;color:var(--forest)}
+.gift-card .btn{width:100%;border-radius:8px}
+.gift-card.featured{background:var(--forest);color:white}
+.gift-card.featured h3,.gift-card.featured .gift-price{color:white}
+.gift-card.featured p{color:#d7e0d5}
+.contact{background:var(--forest);color:white;text-align:center;padding:75px 20px}
+.contact h2{font-size:44px;margin:0}
+.contact p{font-size:13px;line-height:2;margin:15px}
+.contact .btn{margin-top:12px}
+footer{text-align:center;padding:32px 20px;color:#777;font-size:10px;letter-spacing:1.5px}
+.overlay{position:fixed;inset:0;background:#0007;z-index:40;opacity:0;visibility:hidden;transition:.25s}
+.overlay.visible{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;right:0;top:0;height:100dvh;width:min(460px,100%);background:var(--cream);z-index:41;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;padding:25px}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px}
+.cart-head h2{font-size:30px;color:var(--forest);margin:0}
+.close-btn{background:none;border:0;font-size:28px;color:var(--forest)}
+.cart-items{overflow:auto;flex:1;padding:8px 0}
+.cart-empty{text-align:center;color:var(--muted);padding:45px 10px}
+.cart-item{display:grid;grid-template-columns:1fr auto;gap:12px;border-bottom:1px solid var(--line);padding:17px 0;font-size:13px}
+.cart-item strong{display:block;color:var(--forest);font-size:15px}
+.cart-item small{color:var(--muted)}
+.item-total{font-weight:bold;white-space:nowrap}
+.qty-controls{display:flex;align-items:center;gap:10px;margin-top:9px}
+.qty-controls button{border:1px solid var(--line);background:white;width:27px;height:27px;border-radius:50%;color:var(--forest)}
+.remove{border:0!important;background:none!important;color:#9b6158!important;width:auto!important;border-radius:0!important;font-size:10px;letter-spacing:1px;margin-left:8px}
+.cart-footer{border-top:1px solid var(--line);padding-top:16px}
+.delivery-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--forest);font-weight:bold}
+.delivery-select{width:100%;padding:12px;margin:8px 0 12px;background:white;border:1px solid var(--line)}
+.shipping-note{font-size:11px;color:var(--muted);margin:0 0 12px}
+.totals div{display:flex;justify-content:space-between;margin:7px 0;font-size:13px}
+.totals .grand{font-size:17px;font-weight:bold;color:var(--forest);padding-top:8px;border-top:1px solid var(--line)}
+.checkout-btn{width:100%;margin-top:12px;padding:16px}
+.checkout-help{text-align:center;font-size:10px;color:var(--muted);margin:9px 0 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--forest);color:white;padding:12px 18px;border-radius:30px;font-size:12px;z-index:60;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:980px){
+ .nav{padding:14px 20px}.nav-links{gap:14px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .product-art{height:220px}.gift-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+ .menu-toggle{display:inline-flex}.nav{flex-wrap:wrap}
+ .nav-links{display:none;order:3;width:100%;flex-direction:column;padding:12px 0}
+ .nav-links.show{display:flex}.nav-links a{padding:8px}
+ .brand{font-size:22px}.hero{min-height:510px;padding:60px 7%}
+ .hero h1{font-size:54px}.section{padding:60px 18px}
+ .feature-inner{grid-template-columns:1fr;padding:48px 20px;gap:28px}
+ .feature-art{min-height:230px}.gift-grid{grid-template-columns:1fr}
+ .product-grid{gap:12px}.product-info{padding:16px 10px}
+ .product-info h3{font-size:20px}.product-art{height:175px}
+ .jar{width:82px;height:112px;font-size:12px}
+ .product-info p{min-height:48px}.announcement{font-size:9px}
+}
+@media(max-width:380px){
+ .nav-actions{gap:6px}.icon-btn{padding:9px 10px}
+ .brand{letter-spacing:3px}.product-grid{grid-template-columns:1fr}
+ .product-art{height:220px}
+}
+</style>
+</head>
 <body>
 
-<div class="topbar">
-A BOTANICAL EXPERIENCE · MADE TO BE DISCOVERED
-</div>
-
-<header>
-<nav class="nav">
-<a href="#home" class="brand">
-ZUVÉORA
-<small>BOTANICAL BLISS</small>
-</a>
-
-<div class="navlinks">
-<a href="#home">HOME</a>
-<a href="#shop">SHOP</a>
-<a href="#discovery">DISCOVER</a>
-<a href="#story">OUR STORY</a>
-<a href="#contact">CONTACT</a>
-</div>
-
-<div class="navright">
-<button onclick="document.getElementById('search').focus()">⌕</button>
-<button onclick="openCart()">BAG (<span id="count">0</span>)</button>
-</div>
-</nav>
-</header>
-
 <main>
-<section class="hero" id="home">
-<div class="hero-content">
-<div class="eyebrow">THE ART OF BOTANICAL LIVING</div>
-<h1>A World of<br>Botanical Bliss.</h1>
-<p>
-Discover a collection inspired by nature,
-beautiful botanicals and the art of slowing down.
-A little moment of luxury in every cup.
-</p>
-<a class="btn light" href="#shop">EXPLORE COLLECTION</a>
+<section class="hero" id="home"><div class="hero-copy">
+  <div class="eyebrow">The art of botanical living</div><h1>A World of<br>Botanical Bliss.</h1>
+  <p>Discover a collection inspired by nature, beautiful botanicals and the art of slowing down. A little moment of luxury in every cup.</p>
+  <a class="btn btn-outline" href="#shop">Explore collection ↗</a>
+</div></section>
+
+<section class="section" id="shop"><div class="section-head"><div class="eyebrow">Our collection</div><h2 class="section-title">Discover Your Favourite</h2><p class="subtitle">A botanical journey, thoughtfully brought together.</p>
+<div class="shop-tools"><input class="search" id="search" type="search" placeholder="Search a flavour or blend…" aria-label="Search products"></div></div>
+<div class="product-grid" id="products"></div></section>
+
+<section class="feature" id="discovery"><div class="feature-inner"><div class="feature-art" aria-hidden="true">✿</div><div><div class="eyebrow">A little box of wonder</div><h2>The Discovery Box</h2><p>Explore the botanical world of ZUVÉORA with a curated selection of signature flavours. Find a new favourite and enjoy a thoughtful tea moment.</p><a class="btn" href="#gifts">Explore gifting</a></div></div></section>
+
+<section class="section" id="story"><div class="story"><div class="eyebrow">The story of ZUVÉORA</div><h2 class="section-title">Nature, With a Touch of Elegance.</h2><p>ZUVÉORA is a botanical-inspired brand created around beautiful flavours and thoughtful experiences. We believe the smallest moments can become something special. Discover our collection and experience a little botanical bliss.</p></div></section>
+
+<section class="section gifts" id="gifts"><div class="section-head"><div class="eyebrow">Celebrate beautifully</div><h2 class="section-title">Gifts for Shaadi & Birthdays</h2><p class="subtitle">Thoughtful favours for Mehndi, Barat, Walima, birthdays and special moments. Bulk orders available.</p></div>
+<div class="gift-grid">
+ <article class="gift-card"><div class="gift-icon">💛</div><h3>Mehndi / Shaadi Favor</h3><p>1 box · 4 normal tea bombs<br>Custom tag with names & date</p><div class="gift-price">Rs. 999</div><p>Perfect for guests · bulk discounts</p><button class="btn gift-add" data-name="Mehndi / Shaadi Favor (1 Box)" data-price="999">Add to bag</button></article>
+ <article class="gift-card featured"><div class="gift-icon">🎂</div><h3>Birthday Blast Box</h3><p>2 boxes · 8 normal tea bombs<br>Birthday card + candle included</p><div class="gift-price">Rs. 1,999</div><p>A thoughtful birthday surprise</p><button class="btn gift-add" data-name="Birthday Blast Box" data-price="1999" style="background:white;color:#263e32;border-color:white">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">🎁</div><h3>Premium Shaadi Hamper</h3><p>4 boxes · 16 normal tea bombs<br>Fancy box, ribbon & dried flowers</p><div class="gift-price">Rs. 3,999</div><p>For the dulhan or close family</p><button class="btn gift-add" data-name="Premium Shaadi Hamper" data-price="3999">Add to bag</button></article>
 </div>
 </section>
 
-<section class="section center" id="shop">
-<div class="eyebrow">OUR COLLECTION</div>
-<h2 class="section-title">Discover Your Favourite</h2>
-<p class="subtitle">A botanical journey, thoughtfully brought together.</p>
+<section class="section" id="bundles"><div class="section-head"><div class="eyebrow">Limited-time · Shaadi season</div><h2 class="section-title">Function Bundles</h2><p class="subtitle">50 boxes per pack · bulk gifting made easy</p></div>
+<div class="gift-grid">
+ <article class="gift-card"><div class="gift-icon">💍</div><h3>Shadi Special</h3><p>50 boxes · premium mix</p><div class="gift-price">Rs. 44,999</div><p>Rs. 899 per box</p><button class="btn gift-add" data-name="Shadi Special Bundle — 50 Boxes" data-price="44999">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">💛</div><h3>Mehndi Pack</h3><p>50 boxes · yellow theme</p><div class="gift-price">Rs. 34,999</div><p>Rs. 699 per box</p><button class="btn gift-add" data-name="Mehndi Pack — 50 Boxes" data-price="34999">Add to bag</button></article>
+ <article class="gift-card"><div class="gift-icon">✨</div><h3>Walima Pack</h3><p>50 boxes · elegant premium</p><div class="gift-price">Rs. 39,999</div><p>Rs. 799 per box</p><button class="btn gift-add" data-name="Walima Pack — 50 Boxes" data-price="39999">Add to bag</button></article>
+</div></section>
 
-<input id="search" class="search"
-placeholder="Search your favourite blend..."
-oninput="renderProducts()">
-
-<div class="products" id="products"></div>
-</section>
-
-<section class="discovery" id="discovery">
-<div class="discovery-art">✿</div>
-<div>
-<div class="eyebrow">A LITTLE BOX OF WONDER</div>
-<h2>The Discovery Box</h2>
-<p>
-Explore the botanical world of ZUVÉORA with
-a curated selection of our signature flavours.
-Find a new favourite and enjoy the experience.
-</p>
-<a class="btn" href="#contact">ENQUIRE ABOUT THE BOX</a>
-</div>
-</section>
-
-<section class="section">
-<div class="story" id="story">
-<div class="eyebrow">THE STORY OF ZUVÉORA</div>
-<h2 class="section-title">Nature, With a Touch of Elegance.</h2>
-<p>
-ZUVÉORA is a botanical-inspired brand created
-around beautiful flavours and thoughtful experiences.
-We believe that the smallest moments can become
-something special. Discover our collection and
-experience a little botanical bliss.
-</p>
-</div>
-</section>
-
-<section class="contact" id="contact">
-<div class="eyebrow">WE WOULD LOVE TO HEAR FROM YOU</div>
-<h2>Let's Connect.</h2>
-<p>Questions, orders or collaborations?</p>
-<p id="contactDetails"></p>
-<a class="btn light" href="#" id="whatsapp">CONTACT US ON WHATSAPP</a>
-</section>
+<section class="contact" id="contact"><div class="eyebrow">We would love to hear from you</div><h2>Let's Connect.</h2><p>Questions, orders or collaborations?</p><p id="contactInfo">Message us on WhatsApp to place an order.</p><a class="btn btn-outline" id="contactWhatsApp" href="#contact">Contact us on WhatsApp</a></section>
 </main>
-<!-- GIFTS FOR FUNCTIONS -->
-<section id="gifts" style="max-width:1100px;margin:40px auto;padding:0 16px;">
-  <h2 style="text-align:center;font-size:32px;margin-bottom:6px;">Gifts for Shaadi & Birthdays</h2>
-  <p style="text-align:center;color:#827d70;margin-bottom:24px;">Perfect for Mehndi, Barat, Birthdays & Shendi - Bulk orders available</p>
+<footer>ZUVÉORA · BOTANICAL BLISS<br><br>© <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.</footer>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
-
-    <!-- 1. MEHNDI FAVOR -->
-    <div style="background:#fff;border:1px solid #e8e2d5;border-radius:20px;padding:22px;text-align:center;">
-      <div style="font-size:40px;">💛</div>
-      <h3 style="margin:10px 0 6px;">Mehndi / Shaadi Favor</h3>
-      <p style="color:#827d70;font-size:14px;line-height:1.5;">1 Box - 4 Normal Tea Bombs<br>Custom Tag with Bride & Groom Name + Date</p>
-      <div style="font-size:24px;font-weight:800;margin:12px 0;">Rs. 999</div>
-      <div style="font-size:12px;color:#827d70;">Perfect for 50+ guests • Bulk discount</div>
-      <a href="https://wa.me/923000000000?text=I want to order Mehndi Favors - Rs. 999" target="_blank" style="display:block;background:#1a3c34;color:#fff;padding:12px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:14px;">Order for Function</a>
-    </div>
-
-    <!-- 2. BIRTHDAY -->
-    <div style="background:#1a3c34;color:#fff;border-radius:20px;padding:22px;text-align:center;position:relative;">
-      <div style="position:absolute;top:12px;right:12px;background:#ffd166;color:#1a3c34;font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;">MOST LOVED</div>
-      <div style="font-size:40px;">🎂</div>
-      <h3 style="margin:10px 0 6px;">Birthday Blast Box</h3>
-      <p style="color:#d6e8df;font-size:14px;line-height:1.5;">2 Boxes - 8 Normal Tea Bombs<br>Birthday Card + Candle Included</p>
-      <div style="font-size:24px;font-weight:800;margin:12px 0;">Rs. 1,999</div>
-      <div style="font-size:12px;color:#d6e8df;">Great gift for her / him</div>
-      <a href="https://wa.me/923000000000?text=I want to order Birthday Blast Box - Rs. 1999" target="_blank" style="display:block;background:#fff;color:#1a3c34;padding:12px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:14px;">Order for Function</a>
-    </div>
-
-    <!-- 3. PREMIUM HAMPER -->
-    <div style="background:#fff;border:1px solid #e8e2d5;border-radius:20px;padding:22px;text-align:center;">
-      <div style="font-size:40px;">🎁</div>
-      <h3 style="margin:10px 0 6px;">Premium Shaadi Hamper</h3>
-      <p style="color:#827d70;font-size:14px;line-height:1.5;">4 Boxes - 16 Normal Tea Bombs<br>Fancy Box + Ribbon + Dried Flowers</p>
-      <div style="font-size:24px;font-weight:800;margin:12px 0;">Rs. 3,999</div>
-      <div style="font-size:12px;color:#827d70;">For Dulhan / Close Family Gift</div>
-      <a href="https://wa.me/923000000000?text=I want to order Premium Shaadi Hamper - Rs. 3999" target="_blank" style="display:block;background:#1a3c34;color:#fff;padding:12px;border-radius:12px;text-decoration:none;font-weight:700;margin-top:14px;">Order for Function</a>
-    </div>
-
-  </div>
-</section>
-<!-- END GIFTS -->
-
- 
-
-
-
-<!-- HIDE BLACK BOX + DELIVERY INSIDE WHITE BAG -->
-<script>
-setTimeout(function(){
-
-  // 1. HIDE BLACK FLOATING BOX - the one that stays on screen all time
-  document.querySelectorAll('div').forEach(function(d){
-    // Black box has Delivery + Bag (0) and is fixed at bottom
-    if(d.innerText.includes('Delivery Method') && d.innerText.includes('Bag (0)')){
-      d.style.display = 'none';
-      d.remove();
-    }
-  });
-  // Also hide any other fixed black box with Delivery
-  document.querySelectorAll('div').forEach(function(d){
-    if(d.style.position === 'fixed' && d.innerText.includes('Delivery Method')){
-      // Don't hide if it's inside Your Bag popup
-      if(!d.closest('#bag-popup') && !d.id.includes('bag')){
-        d.style.display = 'none';
-      }
-    }
-  });
-
-  // 2. ADD DELIVERY INSIDE WHITE YOUR BAG POPUP
-  function addDeliveryInsideWhiteBag(){
-    var whiteBag = document.getElementById('bag-popup') || document.querySelector('[id*="bag"]');
-    if(!whiteBag) return;
-    if(whiteBag.innerHTML.includes('Delivery Method')) return; // already there
-
-    var box = document.createElement('div');
-    box.innerHTML = `
-      <div style="border-top:2px solid #eee; margin-top:15px; padding-top:12px;">
-        <h3 style="margin:0 0 10px 0;">🚚 Delivery Method</h3>
-        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery" checked> Local Rider - Sadiqabad - Rs. 150</label>
-        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> Rahim Yar Khan - Rs. 250</label>
-        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> TCS All Pakistan - Rs. 300</label>
-        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> Pickup - FREE</label>
-        <p style="font-size:12px; color:green;">Free delivery on Rs. 2,500+ orders</p>
-      </div>
-    `;
-    // Put it before ORDER ON WHATSAPP button
-    var waBtn = whiteBag.querySelector('button');
-    if(waBtn) whiteBag.insertBefore(box, waBtn);
-    else whiteBag.appendChild(box);
-  }
-
-  addDeliveryInsideWhiteBag();
-  // Run again when Bag opens
-  setInterval(addDeliveryInsideWhiteBag, 2000);
-
-}, 1000);
-</script>
-<!-- END HIDE BLACK BOX -->
-  <!-- MAKE IT ONE BAG - SHADI TO WHITE BAG -->
-<script>
-setTimeout(function(){
-
-  // 1. Find White Bag's add function - save it
-  var whiteAdd = window.addToBag;
-
-  // 2. Force Shadi Bundle button to use White Bag
-  document.querySelectorAll('button').forEach(function(b){
-    var txt = b.innerText.toLowerCase();
-    // Shadi Bundle button says "Add Shadi Bundle" or "Add Bundle"
-    if(txt.includes('shadi') || txt.includes('bundle')){
-      // Remove old click, make new click = add to White Bag
-      b.onclick = function(){
-        // Add Shadi Bundle to SAME White Bag
-        if(whiteAdd){
-          whiteAdd('Shadi Special Bundle', 44999);
-        } else {
-          // If whiteAdd not found, push manually
-          window.bag = window.bag || [];
-          window.bag.push({name:'Shadi Special Bundle', price:44999});
-          if(typeof updateBag === 'function') updateBag();
-          alert('Shadi Special Bundle added to Your Bag!');
-        }
-        // Open White Bag popup so you see it
-        setTimeout(function(){
-          var whiteBag = document.getElementById('bag-popup');
-          if(whiteBag) whiteBag.style.display = 'block';
-        }, 300);
-      };
-      // Change button text to same as others
-      b.innerText = 'Add to Bag 🛍️';
-    }
-  });
-
-  // 3. Also make sure any other product button uses White Bag only
-  // Kill black bag's function if it still exists
-  document.querySelectorAll('div').forEach(function(d){
-    if(d.innerText.includes('Bag (0)') && d.style.position === 'fixed'){
-      d.style.display = 'none';
-    }
-  });
-
-  console.log('Now 1 Bag - Shadi goes to White Bag');
-}, 1000);
-</script>
-<!-- END ONE BAG -->
-<!-- NEW FUNCTIONS BUNDLE - CONNECTED TO WHITE BAG -->
-<section id="functions-bundle" style="padding:50px 15px; max-width:1100px; margin:0 auto;">
-  <div style="text-align:center; margin-bottom:30px;">
-    <span style="background:#000; color:#fff; padding:6px 14px; border-radius:20px; font-size:12px; letter-spacing:1px;">LIMITED TIME • SHADI SEASON</span>
-    <h2 style="font-size:32px; margin:12px 0 5px;">Functions & Shadi Bundles 💍</h2>
-    <p style="color:#666; margin:0;">50 Boxes per pack • Same Bag as your normal products • Free Delivery</p>
-  </div>
-
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
-
-    <!-- SHADI -->
-    <div style="background:#fff; border:1px solid #eee; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-      <div style="background:linear-gradient(135deg,#ff4d6d,#ff8fa3); padding:20px; color:white; text-align:center;">
-        <div style="font-size:36px;">💍</div>
-        <h3 style="margin:5px 0;">Shadi Special</h3>
-        <span style="background:white; color:#ff4d6d; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;">BEST SELLER</span>
-      </div>
-      <div style="padding:20px; text-align:center;">
-        <p style="color:#777; font-size:14px; margin:0;">50 Boxes • Premium Mix</p>
-        <p style="margin:10px 0 0;"><span style="color:#999; text-decoration:line-through;">Rs. 64,950</span> <span style="background:#ffeef1; color:#ff4d6d; padding:3px 8px; border-radius:10px; font-size:12px; font-weight:bold;">-31%</span></p>
-        <p style="font-size:26px; font-weight:800; margin:5px 0;">Rs. 44,999</p>
-        <p style="background:#000; color:#fff; display:inline-block; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:bold;">🔥 YOU SAVE Rs. 19,951</p>
-        <p style="font-size:12px; color:#888;">Rs. 899 / box • Was Rs. 1,299 / box</p>
-        <button onclick="addBundleToWhiteBag('Shadi Special Bundle - 50 Boxes', 44999)" style="width:100%; background:#000; color:#fff; border:none; padding:14px; border-radius:12px; font-weight:bold; cursor:pointer; font-size:15px; margin-top:10px;">🛍️ Add to Bag</button>
-      </div>
-    </div>
-
-    <!-- MEHNDI -->
-    <div style="background:#fff; border:1px solid #eee; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-      <div style="background:linear-gradient(135deg,#ffbd00,#ffdf6b); padding:20px; color:#333; text-align:center;">
-        <div style="font-size:36px;">💛</div>
-        <h3 style="margin:5px 0;">Mehndi Pack</h3>
-        <span style="background:#000; color:#ffdf6b; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;">MEHNDI / MAYOUN</span>
-      </div>
-      <div style="padding:20px; text-align:center;">
-        <p style="color:#777; font-size:14px; margin:0;">50 Boxes • Yellow Theme</p>
-        <p style="margin:10px 0 0;"><span style="color:#999; text-decoration:line-through;">Rs. 49,950</span> <span style="background:#fff3cd; color:#856404; padding:3px 8px; border-radius:10px; font-size:12px; font-weight:bold;">-30%</span></p>
-        <p style="font-size:26px; font-weight:800; margin:5px 0;">Rs. 34,999</p>
-        <p style="background:#ffbd00; color:#000; display:inline-block; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:bold;">💛 YOU SAVE Rs. 14,951</p>
-        <p style="font-size:12px; color:#888;">Rs. 699 / box • Was Rs. 999 / box</p>
-        <button onclick="addBundleToWhiteBag('Mehndi Pack - 50 Boxes', 34999)" style="width:100%; background:#000; color:#fff; border:none; padding:14px; border-radius:12px; font-weight:bold; cursor:pointer; font-size:15px; margin-top:10px;">🛍️ Add to Bag</button>
-      </div>
-    </div>
-
-    <!-- WALIMA -->
-    <div style="background:#fff; border:1px solid #eee; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
-      <div style="background:linear-gradient(135deg,#111,#555); padding:20px; color:white; text-align:center;">
-        <div style="font-size:36px;">✨</div>
-        <h3 style="margin:5px 0;">Walima Pack</h3>
-        <span style="background:white; color:#111; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:bold;">ELEGANT WHITE / GOLD</span>
-      </div>
-      <div style="padding:20px; text-align:center;">
-        <p style="color:#777; font-size:14px; margin:0;">50 Boxes • Elegant Premium</p>
-        <p style="margin:10px 0 0;"><span style="color:#999; text-decoration:line-through;">Rs. 59,950</span> <span style="background:#e8f5e9; color:#2e7d32; padding:3px 8px; border-radius:10px; font-size:12px; font-weight:bold;">-33%</span></p>
-        <p style="font-size:26px; font-weight:800; margin:5px 0;">Rs. 39,999</p>
-        <p style="background:#e8f5e9; color:#2e7d32; display:inline-block; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:bold;">✨ YOU SAVE Rs. 19,951</p>
-        <p style="font-size:12px; color:#888;">Rs. 799 / box • Was Rs. 1,199 / box</p>
-        <button onclick="addBundleToWhiteBag('Walima Pack - 50 Boxes', 39999)" style="width:100%; background:#000; color:#fff; border:none; padding:14px; border-radius:12px; font-weight:bold; cursor:pointer; font-size:15px; margin-top:10px;">🛍️ Add to Bag</button>
-      </div>
-    </div>
-
-  </div>
-</section>
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+ <div class="cart-head"><h2>Your Bag</h2><button class="close-btn" id="closeCart" aria-label="Close bag">×</button></div>
+ <div class="cart-items" id="cartItems"></div>
+ <div class="cart-footer">
+  <label class="delivery-label" for="delivery">Delivery method</label>
+  <select class="delivery-select" id="delivery">
+   <option value="150">Local Rider — Sadiqabad (Rs. 150)</option>
+   <option value="250">Rahim Yar Khan (Rs. 250)</option>
+   <option value="300">TCS — All Pakistan (Rs. 300)</option>
+   <option value="0">Pickup — Free</option>
+  </select>
+  <p class="shipping-note" id="shippingNote">Free delivery on product orders of Rs. 2,500 or more (confirm availability).</p>
+  <div class="totals" id="totals"></div>
+  <button class="btn checkout-btn" id="checkout">Order on WhatsApp ↗</button>
+  <p class="checkout-help">Your order opens in WhatsApp for confirmation.</p>
+ </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-function addBundleToWhiteBag(name, price){
-  // Try ALL possible White Bag functions your site uses
-  if (typeof addToBag === 'function') { addToBag(name, price); return; }
-  if (typeof addToCart === 'function') { addToCart(name, price); return; }
-  if (typeof addItem === 'function') { addItem(name, price); return; }
-  // Fallback: click the White Bag button if exists, else alert
-  alert(name + ' added - Rs. ' + price + ' - Open White Bag to checkout');
-}
-</script>
-<!-- END NEW FUNCTIONS BUNDLE -->
-<footer>
-ZUVÉORA · BOTANICAL BLISS<br><br>
-© <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.
-</footer>
 
-<div class="cart-panel" id="cartPanel">
-<div class="cart">
-<div class="cart-head">
-<h2>Your Bag</h2>
-<button onclick="closeCart()">×</button>
-</div>
-<div id="cartItems"></div>
-<div class="total" id="total"></div>
-<button class="btn checkout" onclick="checkout()">ORDER ON WHATSAPP</button>
-</div>
-</div>
-
-<script>
-const SETTINGS = {
-  whatsapp: "",
-  email: "",
-  instagram: ""
+/* Replace the demo number with your actual WhatsApp number */
+const CONFIG = {
+  whatsapp: "923000000000",
+  freeDeliveryThreshold: 2500
 };
 
 const PACKS = [
-  {name:"1 Normal Tea Bomb (1 Bomb)",price:199},
-  {name:"1 Box - 4 Normal Tea Bombs",price:749},
-  {name:"2 Boxes - 8 Normal Tea Bombs",price:1449},
-  {name:"4 Boxes - 16 Normal Tea Bombs",price:2799},
-  {name:"6 Boxes - 24 Normal Tea Bombs",price:4099},
-  {name:"12 Boxes - 48 Normal Tea Bombs",price:7999}
+ {name:"1 Tea Bomb",price:199},
+ {name:"1 Box · 4 Tea Bombs",price:749},
+ {name:"2 Boxes · 8 Tea Bombs",price:1449},
+ {name:"4 Boxes · 16 Tea Bombs",price:2799},
+ {name:"6 Boxes · 24 Tea Bombs",price:4099},
+ {name:"12 Boxes · 48 Tea Bombs",price:7999}
 ];
 
 const PRODUCTS = [
-  {id:1,name:"Rose Bloom",description:"Rose · Hibiscus · Chamomile",color:"rose",symbol:"ROSE BLOOM"},
-  {id:2,name:"Citrus Bliss",description:"Lemon · Mint · Ginger",color:"citrus",symbol:"CITRUS BLISS"},
-  {id:3,name:"Golden Spice",description:"Cinnamon · Cardamom · Apple",color:"spice",symbol:"GOLDEN SPICE"},
-  {id:4,name:"Pure Essence",description:"Our sugar-free botanical blend",color:"pure",symbol:"PURE ESSENCE"}
+ {id:"rose",name:"Rose Bloom",description:"Rose · Hibiscus · Chamomile",color:"rose",symbol:"ROSE BLOOM"},
+ {id:"citrus",name:"Citrus Bliss",description:"Lemon · Mint · Ginger",color:"citrus",symbol:"CITRUS BLISS"},
+ {id:"spice",name:"Golden Spice",description:"Cinnamon · Cardamom · Apple",color:"spice",symbol:"GOLDEN SPICE"},
+ {id:"pure",name:"Pure Essence",description:"Our sugar-free botanical blend",color:"pure",symbol:"PURE ESSENCE"}
 ];
 
-let cart = [];
+const $ = (id)=>document.getElementById(id);
+let cart=[];
+const money=(n)=>"Rs. "+Number(n).toLocaleString("en-PK");
 
-function money(amount){
- return "Rs. " + amount.toLocaleString("en-PK");
+function safeText(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
 function renderProducts(){
- const query=document.getElementById("search").value.toLowerCase();
- const container=document.getElementById("products");
- const filtered=PRODUCTS.filter(p=>
-  (p.name+" "+p.description).toLowerCase().includes(query)
- );
- container.innerHTML=filtered.map(p=>`
+ const query=$("search").value.trim().toLowerCase();
+ const filtered=PRODUCTS.filter(p=>(p.name+" "+p.description).toLowerCase().includes(query));
+
+ $("products").innerHTML=filtered.map(p=>`
  <article class="product-card">
   <div class="product-art ${p.color}">
    <div class="jar">${p.symbol}</div>
@@ -628,118 +556,179 @@ function renderProducts(){
    <h3>${p.name}</h3>
    <p>${p.description}</p>
    <div class="price">From ${money(PACKS[0].price)}</div>
-   <select id="pack-${p.id}">
+   <label class="sr-only" for="pack-${p.id}">Choose pack for ${p.name}</label>
+   <select class="pack-select" id="pack-${p.id}">
     ${PACKS.map((pack,i)=>`<option value="${i}">${pack.name} — ${money(pack.price)}</option>`).join("")}
    </select>
-   <button class="add" onclick="addToCart(${p.id})">ADD TO BAG</button>
+   <button class="add-btn" data-product="${p.id}">Add to bag</button>
   </div>
- </article>
- `).join("") || '<div class="empty">No products found.</div>';
+ </article>`).join("")||'<div class="empty-state">No blends found. Try another search.</div>';
 }
 
-function addToCart(id){
- const product=PRODUCTS.find(p=>p.id===id);
- const selected=Number(document.getElementById("pack-"+id).value);
- const pack=PACKS[selected];
- // Check if same product + pack already in cart
- const existing = cart.find(item => item.id===id && item.pack===pack.name);
- if(existing){
-   existing.qty += 1;
- } else {
-   cart.push({id:id, name:product.name, pack:pack.name, price:pack.price, qty:1});
- }
- updateCart();
- openCart();
+function addItem(key,name,pack,price){
+ const existing=cart.find(i=>i.key===key);
+ if(existing)existing.qty++;
+ else cart.push({key,name,pack,price:Number(price),qty:1});
+ renderCart();
+ openBag();
+ showToast(name+" added to your bag");
 }
 
-function updateCart(){
- const totalQty = cart.reduce((sum,item)=>sum+item.qty,0);
- document.getElementById("count").textContent=totalQty;
+function addProduct(id){
+ const p=PRODUCTS.find(x=>x.id===id);
+ if(!p)return;
+ const index=Number($("pack-"+id).value);
+ const pack=PACKS[index];
+ addItem(p.id+"-"+index,p.name,pack.name,pack.price);
+}
 
- document.getElementById("cartItems").innerHTML=
- cart.length ? cart.map((item,i)=>`
+function subtotal(){
+ return cart.reduce((s,i)=>s+i.price*i.qty,0);
+}
+
+function shipping(){
+ const chosen=Number($("delivery").value);
+ return subtotal()>=CONFIG.freeDeliveryThreshold&&chosen>0?0:chosen;
+}
+
+function renderCart(){
+ const count=cart.reduce((s,i)=>s+i.qty,0);
+ $("bagCount").textContent=count;
+
+ $("cartItems").innerHTML=cart.length?cart.map((item,i)=>`
  <div class="cart-item">
-  <strong>${item.name}</strong><br>
-  ${item.pack}<br>
-  ${money(item.price)} each · ${money(item.price * item.qty)} total
-  <div class="qty-row">
-    <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
-    <span class="qty-num">${item.qty}</span>
-    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
-    <button class="remove-btn" onclick="removeItem(${i})">REMOVE</button>
+  <div>
+   <strong>${safeText(item.name)}</strong>
+   <small>${safeText(item.pack)} · ${money(item.price)} each</small>
+   <div class="qty-controls">
+    <button data-qty="${i}" data-delta="-1">−</button>
+    <span>${item.qty}</span>
+    <button data-qty="${i}" data-delta="1">+</button>
+    <button class="remove" data-remove="${i}">REMOVE</button>
+   </div>
   </div>
- </div>
- `).join("") : '<div class="empty">Your bag is waiting for something lovely.</div>';
+  <div class="item-total">${money(item.price*item.qty)}</div>
+ </div>`).join(""):'<div class="cart-empty">Your bag is waiting for something lovely. 🌿</div>';
 
- const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
- document.getElementById("total").textContent="TOTAL: "+money(total);
+ const ship=shipping();
+
+ $("totals").innerHTML=`
+ <div><span>Subtotal</span><span>${money(subtotal())}</span></div>
+ <div><span>Delivery</span><span>${ship===0?"FREE":money(ship)}</span></div>
+ <div class="grand"><span>Total</span><span>${money(subtotal()+ship)}</span></div>`;
+
+ $("shippingNote").textContent=subtotal()>=CONFIG.freeDeliveryThreshold
+ ?"Free delivery applied to this order (confirm delivery coverage)."
+ :"Free delivery on product orders of Rs. "+CONFIG.freeDeliveryThreshold.toLocaleString()+" or more (confirm availability).";
 }
 
-function changeQty(i, delta){
-  cart[i].qty += delta;
-  if(cart[i].qty <= 0){
-    cart.splice(i,1);
-  }
-  updateCart();
+function openBag(){
+ $("overlay").classList.add("visible");
+ $("cartDrawer").classList.add("open");
+ $("cartDrawer").setAttribute("aria-hidden","false");
+ document.body.classList.add("locked");
+ $("closeCart").focus();
 }
 
-function removeItem(i){
- cart.splice(i,1);
- updateCart();
+function closeBag(){
+ $("overlay").classList.remove("visible");
+ $("cartDrawer").classList.remove("open");
+ $("cartDrawer").setAttribute("aria-hidden","true");
+ document.body.classList.remove("locked");
 }
 
-function openCart(){
- document.getElementById("cartPanel").classList.add("open");
-}
-function closeCart(){
- document.getElementById("cartPanel").classList.remove("open");
+function showToast(message){
+ const t=$("toast");
+ t.textContent=message;
+ t.classList.add("show");
+ clearTimeout(showToast.timer);
+ showToast.timer=setTimeout(()=>t.classList.remove("show"),2200);
 }
 
 function checkout(){
  if(!cart.length){
-  alert("Your bag is empty!");
+  showToast("Your bag is empty.");
   return;
  }
- if(!SETTINGS.whatsapp){
-  alert("Please add your WhatsApp number in the SETTINGS section of the code first.");
+ if(!CONFIG.whatsapp||CONFIG.whatsapp==="923000000000"){
+  alert("Please replace the demo WhatsApp number in CONFIG before taking real orders.");
   return;
  }
- const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
- const lines=cart.map(item=>
-  item.qty + "x " + item.name+" - "+item.pack+" - "+money(item.price * item.qty)
- ).join("\n");
- const message=
- "Hello ZUVÉORA! I would like to place an order:\n\n"+
- lines+"\n\nTotal: "+money(total)+
- "\n\nPlease confirm my order.";
- window.open(
-  "https://wa.me/"+SETTINGS.whatsapp+
-  "?text="+encodeURIComponent(message),
-  "_blank"
- );
+
+ const lines=cart.map(i=>`${i.qty} × ${i.name} (${i.pack}) — ${money(i.price*i.qty)}`).join("\n");
+
+ const message=`Hello ZUVÉORA! I'd like to place an order:
+
+${lines}
+
+Subtotal: ${money(subtotal())}
+Delivery: ${shipping()===0?"FREE":money(shipping())}
+Total: ${money(subtotal()+shipping())}
+
+Please confirm my order and delivery details.`;
+
+ const url="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(message);
+ window.open(url,"_blank","noopener,noreferrer");
 }
 
-function setupContacts(){
- let details=[];
- if(SETTINGS.email) details.push("Email: "+SETTINGS.email);
- if(SETTINGS.instagram) details.push("Instagram: "+SETTINGS.instagram);
- document.getElementById("contactDetails").textContent=details.join(" | ");
- const whatsapp=document.getElementById("whatsapp");
- if(SETTINGS.whatsapp){
-  whatsapp.href="https://wa.me/"+SETTINGS.whatsapp;
- }else{
-  whatsapp.onclick=function(e){
-   e.preventDefault();
-   alert("Add your WhatsApp number in SETTINGS first.");
-  };
+$("products").addEventListener("click",e=>{
+ const b=e.target.closest("[data-product]");
+ if(b)addProduct(b.dataset.product);
+});
+
+document.querySelectorAll(".gift-add").forEach(b=>
+ b.addEventListener("click",()=>addItem(
+  "gift-"+b.dataset.name,
+  b.dataset.name,
+  "Gift / bundle",
+  Number(b.dataset.price)
+ ))
+);
+
+$("search").addEventListener("input",renderProducts);
+$("openCart").addEventListener("click",openBag);
+$("closeCart").addEventListener("click",closeBag);
+$("overlay").addEventListener("click",closeBag);
+$("delivery").addEventListener("change",renderCart);
+$("checkout").addEventListener("click",checkout);
+
+$("cartItems").addEventListener("click",e=>{
+ const q=e.target.closest("[data-qty]");
+ const r=e.target.closest("[data-remove]");
+
+ if(q){
+  const i=Number(q.dataset.qty);
+  cart[i].qty+=Number(q.dataset.delta);
+  if(cart[i].qty<=0)cart.splice(i,1);
+  renderCart();
  }
-}
 
-document.getElementById("year").textContent=new Date().getFullYear();
+ if(r){
+  cart.splice(Number(r.dataset.remove),1);
+  renderCart();
+ }
+});
+
+$("menuToggle").addEventListener("click",()=>
+ $("navLinks").classList.toggle("show")
+);
+
+$("navLinks").addEventListener("click",e=>{
+ if(e.target.closest("a"))$("navLinks").classList.remove("show");
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeBag();
+});
+
+$("year").textContent=new Date().getFullYear();
 renderProducts();
-updateCart();
-setupContacts();
-</script>
+renderCart();
 
+if(CONFIG.whatsapp&&CONFIG.whatsapp!=="923000000000"){
+ $("contactWhatsApp").href="https://wa.me/"+CONFIG.whatsapp;
+ $("contactInfo").textContent="Reach us directly on WhatsApp for orders and collaborations.";
+}
+</script>
 </body>
 </html>

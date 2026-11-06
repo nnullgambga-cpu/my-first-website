@@ -430,6 +430,99 @@ document.querySelectorAll('input[name="delivery"]').forEach(function(r){
 });
 </script>
 <!-- END DELIVERY SYSTEM --> 
+  <!-- FUNCTIONS BUNDLE + BAG CART WITH DELIVERY -->
+<section id="functions-bundle" style="max-width:800px;margin:30px auto;padding:25px;background:#fff0f5;border:2px solid #d63384;border-radius:15px;font-family:Arial;text-align:center;">
+  <h2 style="color:#8a0050;margin:0;">💍 Functions & Shadi Bundle</h2>
+  <p style="color:#555;font-size:14px;">For Mehndi, Barat, Walima - Complete Shadi Pack</p>
+  
+  <div style="background:white;padding:15px;border-radius:12px;margin:15px 0;text-align:left;">
+    <h3 style="margin:0;">🎁 Shadi Special Bundle - 50 Boxes</h3>
+    <p style="margin:5px 0;color:#777;font-size:13px;">50 Boxes (6 Tea Bombs each) = 300 Bombs + FREE Custom Tag with Dulhan-Dulha Name + FREE Delivery via TCS / Rider</p>
+    <p style="font-size:20px;font-weight:bold;color:#8a0050;margin:10px 0;">Rs. 44,999 <span style="font-size:13px;color:green;text-decoration:none;">You Save Rs. 5,000</span></p>
+    <button onclick="addToBag('Shadi Special Bundle - 50 Boxes', 44999)" style="background:#d63384;color:white;border:none;padding:12px 20px;border-radius:25px;font-weight:bold;cursor:pointer;width:100%;">Add to Bag 🛍️</button>
+    <button onclick="addToBag('Shadi Special Bundle - 50 Boxes', 44999); openBag();" style="background:#25D366;color:white;border:none;padding:10px 20px;border-radius:25px;font-weight:bold;cursor:pointer;width:100%;margin-top:8px;">Buy Now - Go to Bag ➡️</button>
+  </div>
+
+  <div style="display:flex;gap:10px;">
+    <div style="flex:1;background:white;padding:12px;border-radius:12px;">
+      <b>Mehndi Pack - 20 Boxes</b><br><span style="color:#888;font-size:13px;">Rs. 18,999</span><br>
+      <button onclick="addToBag('Mehndi Pack - 20 Boxes', 18999)" style="background:#333;color:white;border:none;padding:8px 15px;border-radius:20px;margin-top:8px;cursor:pointer;">Add to Bag</button>
+    </div>
+    <div style="flex:1;background:white;padding:12px;border-radius:12px;">
+      <b>Walima Pack - 30 Boxes</b><br><span style="color:#888;font-size:13px;">Rs. 27,999</span><br>
+      <button onclick="addToBag('Walima Pack - 30 Boxes', 27999)" style="background:#333;color:white;border:none;padding:8px 15px;border-radius:20px;margin-top:8px;cursor:pointer;">Add to Bag</button>
+    </div>
+  </div>
+</section>
+
+<!-- BAG / CART BUTTON - Always Visible -->
+<button onclick="openBag()" style="position:fixed;bottom:20px;right:20px;background:#111;color:white;border:none;padding:14px 18px;border-radius:50px;font-size:16px;font-weight:bold;cursor:pointer;z-index:999;box-shadow:0 4px 15px rgba(0,0,0,0.3);">🛍️ Bag (<span id="bag-count">0</span>)</button>
+
+<!-- BAG POPUP -->
+<div id="bag-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;">
+  <div style="background:white;max-width:450px;margin:30px auto;padding:20px;border-radius:15px;max-height:85vh;overflow:auto;font-family:Arial;">
+    <h2 style="margin:0;">Your Bag 🛍️ <span onclick="closeBag()" style="float:right;cursor:pointer;">❌</span></h2>
+    <div id="bag-items" style="margin:15px 0;"></div>
+    <hr>
+    <h3>🚚 Select Delivery - Rider / TCS</h3>
+    <label style="display:block;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;"><input type="radio" name="bag-delivery" value="Local Rider Sadiqabad" data-price="150" checked> 🏍️ Local Rider - Sadiqabad - Rs. 150</label>
+    <label style="display:block;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;"><input type="radio" name="bag-delivery" value="Rahim Yar Khan Rider" data-price="250"> 🏍️ Rahim Yar Khan - Rs. 250</label>
+    <label style="display:block;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;"><input type="radio" name="bag-delivery" value="TCS All Pakistan" data-price="300"> 📦 TCS All Pakistan - Rs. 300</label>
+    <label style="display:block;padding:10px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;"><input type="radio" name="bag-delivery" value="Pickup - FREE" data-price="0"> 🏠 Pickup from Sadiqabad - FREE</label>
+    <p id="bag-total" style="font-weight:bold;font-size:18px;text-align:center;">Total: Rs. 0</p>
+    <p style="font-size:12px;color:green;text-align:center;">FREE delivery if total is Rs. 2,500+ (auto discount on WhatsApp)</p>
+    <button onclick="checkoutBag()" style="background:#25D366;color:white;border:none;padding:14px;width:100%;border-radius:25px;font-size:16px;font-weight:bold;cursor:pointer;">Order on WhatsApp ✅</button>
+  </div>
+</div>
+
+<script>
+// --- BAG LOGIC ---
+let bag = [];
+function addToBag(name, price){
+  bag.push({name:name, price:price});
+  updateBag();
+  alert(name + " added to Bag!");
+}
+function updateBag(){
+  document.getElementById('bag-count').innerText = bag.length;
+  let html = "";
+  let total = 0;
+  bag.forEach((item, i)=>{
+    total += item.price;
+    html += "<div style='display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;'><span>"+item.name+"</span><b>Rs. "+item.price+" <span onclick='removeFromBag("+i+")' style='color:red;cursor:pointer;'> x</span></b></div>";
+  });
+  if(bag.length==0) html = "<p style='text-align:center;color:#888;'>Bag is empty. Add Shadi Bundle.</p>";
+  document.getElementById('bag-items').innerHTML = html;
+  let delivery = document.querySelector('input[name="bag-delivery"]:checked');
+  let dPrice = delivery ? parseInt(delivery.getAttribute('data-price')) : 150;
+  if(total >= 2500) dPrice = 0;
+  let grand = total + dPrice;
+  document.getElementById('bag-total').innerText = "Items: Rs. " + total + " + Delivery: Rs. " + dPrice + " = Total: Rs. " + grand;
+}
+function removeFromBag(i){ bag.splice(i,1); updateBag(); }
+function openBag(){ document.getElementById('bag-popup').style.display='block'; updateBag(); }
+function closeBag(){ document.getElementById('bag-popup').style.display='none'; }
+function checkoutBag(){
+  let delivery = document.querySelector('input[name="bag-delivery"]:checked');
+  let dText = delivery ? delivery.value : "Local Rider";
+  let dPrice = delivery ? parseInt(delivery.getAttribute('data-price')) : 150;
+  let total = 0; let itemsText = "";
+  bag.forEach(item=>{ total += item.price; itemsText += "- " + item.name + " - Rs. " + item.price + "%0A"; });
+  if(total >= 2500) dPrice = 0;
+  let grand = total + dPrice;
+  let msg = "Assalam-o-Alaikum! New Order:%0A%0A" + itemsText + "%0ADelivery: " + encodeURIComponent(dText) + " - Rs. " + dPrice + "%0ATotal: Rs. " + grand;
+  window.open("https://wa.me/923000000000?text=" + msg, "_blank");
+}
+document.querySelectorAll('input[name="bag-delivery"]').forEach(r=>{ r.addEventListener('change', updateBag); });
+updateBag();
+
+// --- FIX SEARCH BAR: Add Functions to search ---
+// If your site has a search list like: var products = [...]
+// Add these 3 lines to that list so search finds Functions:
+var searchExtra = ["Functions", "Shadi Bundle", "Mehndi Pack", "Walima Pack", "Shadi Special Bundle", "Functions Bundle"];
+// If you have a search function, it will now find these words because the section id is functions-bundle
+</script>
+<!-- END FUNCTIONS + BAG -->
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

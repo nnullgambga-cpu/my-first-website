@@ -730,5 +730,281 @@ if(CONFIG.whatsapp&&CONFIG.whatsapp!=="923000000000"){
  $("contactInfo").textContent="Reach us directly on WhatsApp for orders and collaborations.";
 }
 </script>
+  
+<style>
+.delivery-pro {
+  margin: 18px 0;
+  padding: 20px;
+  background: #fffefa;
+  border: 1px solid #e8e1d5;
+  border-radius: 12px;
+}
+.delivery-pro h3 {
+  font: 25px Georgia,serif;
+  color: #263e32;
+  margin: 5px 0 8px;
+}
+.delivery-pro p {
+  font-size: 12px;
+  color: #77796f;
+}
+.delivery-pro label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  color: #263e32;
+  margin: 13px 0 6px;
+}
+.delivery-pro input,
+.delivery-pro textarea {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #e8e1d5;
+  border-radius: 5px;
+  background: white;
+  font: 13px Arial;
+  margin-bottom: 10px;
+  outline-color: #a8b69b;
+}
+.delivery-pro textarea {
+  resize: vertical;
+}
+.delivery-pro .delivery-caption {
+  color: #b69a69;
+  letter-spacing: 2px;
+  font-size: 9px;
+  font-weight: bold;
+}
+.delivery-pro .delivery-option {
+  padding: 12px;
+  background: #f8f5ed;
+  border-radius: 6px;
+  margin-top: 9px;
+  font-size: 12px;
+  color: #263e32;
+}
+.delivery-pro .delivery-option input {
+  display: inline-block;
+  width: auto;
+  margin: 0 8px 0 0;
+}
+.delivery-pro .delivery-option label {
+  display: inline;
+  margin: 0;
+  cursor: pointer;
+}
+.delivery-pro .delivery-price {
+  float: right;
+  font-weight: bold;
+}
+.delivery-pro .pickup-note {
+  display: none;
+  color: #385542;
+}
+</style>
+
+<script>
+(function () {
+  const cartFooter = document.querySelector(".cart-footer");
+  const oldButton = document.getElementById("checkout");
+
+  if (!cartFooter || !oldButton) return;
+
+  // Remove the old checkout button and its old event listener
+  const newButton = oldButton.cloneNode(true);
+  oldButton.replaceWith(newButton);
+
+  // Remove old delivery dropdown
+  const oldDelivery = document.getElementById("delivery");
+  if (oldDelivery) oldDelivery.remove();
+
+  const oldLabel = cartFooter.querySelector(
+    'label[for="delivery"]'
+  );
+  if (oldLabel) oldLabel.remove();
+
+  // Create the refined delivery section
+  const section = document.createElement("div");
+  section.className = "delivery-pro";
+
+  section.innerHTML = `
+    <div class="delivery-caption">THE ZUVÉORA EXPERIENCE</div>
+    <h3>Delivery & Collection</h3>
+    <p>Choose how you would love to receive your order.</p>
+
+    <div class="delivery-option">
+      <input type="radio" name="zDelivery"
+        id="zLocal" value="150" checked>
+      <label for="zLocal">Local Rider · Sadiqabad</label>
+      <span class="delivery-price">Rs. 150</span>
+    </div>
+
+    <div class="delivery-option">
+      <input type="radio" name="zDelivery"
+        id="zCity" value="250">
+      <label for="zCity">City Delivery · Rahim Yar Khan</label>
+      <span class="delivery-price">Rs. 250</span>
+    </div>
+
+    <div class="delivery-option">
+      <input type="radio" name="zDelivery"
+        id="zCourier" value="300">
+      <label for="zCourier">Nationwide Courier · TCS</label>
+      <span class="delivery-price">Rs. 300</span>
+    </div>
+
+    <div class="delivery-option">
+      <input type="radio" name="zDelivery"
+        id="zPickup" value="0">
+      <label for="zPickup">Self Pickup</label>
+      <span class="delivery-price">FREE</span>
+    </div>
+
+    <div style="margin-top:22px">
+      <div class="delivery-caption">CUSTOMER INFORMATION</div>
+      <h3>Your Details</h3>
+
+      <label for="zName">Full Name *</label>
+      <input id="zName" placeholder="Enter your full name">
+
+      <label for="zPhone">Phone / WhatsApp Number *</label>
+      <input id="zPhone" type="tel"
+        placeholder="03XX XXXXXXX">
+
+      <div id="zAddressFields">
+        <label for="zCity">City *</label>
+        <input id="zCity" placeholder="Your city">
+
+        <label for="zAddress">Complete Address *</label>
+        <textarea id="zAddress" rows="3"
+          placeholder="House number, street, area and landmark"></textarea>
+      </div>
+
+      <div class="pickup-note" id="zPickupNote">
+        Your order will be prepared for collection.
+        We will share pickup arrangements on WhatsApp.
+      </div>
+
+      <label for="zNote">Special Instructions (Optional)</label>
+      <textarea id="zNote" rows="2"
+        placeholder="Any special request?"></textarea>
+    </div>
+  `;
+
+  // Insert before the totals
+  const totals = document.getElementById("totals");
+  cartFooter.insertBefore(section, totals);
+
+  const getDelivery = () =>
+    section.querySelector('input[name="zDelivery"]:checked');
+
+  function updateDelivery() {
+    const pickup = getDelivery().id === "zPickup";
+
+    document.getElementById("zAddressFields").style.display =
+      pickup ? "none" : "block";
+
+    document.getElementById("zPickupNote").style.display =
+      pickup ? "block" : "none";
+
+    document.getElementById("zCity").required = !pickup;
+    document.getElementById("zAddress").required = !pickup;
+
+    renderCart();
+  }
+
+  section.addEventListener("change", updateDelivery);
+
+  // Update delivery calculation
+  window.shipping = function () {
+    const selected = Number(getDelivery().value);
+    return subtotal() >= CONFIG.freeDeliveryThreshold &&
+      selected > 0 ? 0 : selected;
+  };
+
+  // Customer checkout
+  newButton.addEventListener("click", function () {
+    if (!cart.length) {
+      showToast("Your bag is empty.");
+      return;
+    }
+
+    const name = document.getElementById("zName").value.trim();
+    const phone = document.getElementById("zPhone").value.trim();
+    const city = document.getElementById("zCity").value.trim();
+    const address = document.getElementById("zAddress").value.trim();
+    const note = document.getElementById("zNote").value.trim();
+
+    const delivery = getDelivery();
+    const pickup = delivery.id === "zPickup";
+
+    if (!name || !phone || (!pickup && (!city || !address))) {
+      alert("Please complete all required customer details.");
+      return;
+    }
+
+    if (!/^[+0-9\s-]{8,18}$/.test(phone)) {
+      alert("Please enter a valid phone number.");
+      return;
+    }
+
+    if (CONFIG.whatsapp === "923000000000") {
+      alert("Please add your real WhatsApp number in CONFIG.");
+      return;
+    }
+
+    const deliveryNames = {
+      zLocal: "Local Rider - Sadiqabad",
+      zCity: "City Delivery - Rahim Yar Khan",
+      zCourier: "Nationwide Courier - TCS",
+      zPickup: "Self Pickup"
+    };
+
+    const items = cart.map(item =>
+      `${item.qty} x ${item.name} (${item.pack}) - ${money(item.price * item.qty)}`
+    ).join("\n");
+
+    const fee = shipping();
+
+    const message = `
+🌿 ZUVÉORA — NEW ORDER
+
+CUSTOMER
+Name: ${name}
+Phone: ${phone}
+
+DELIVERY METHOD
+${deliveryNames[delivery.id]}
+
+${pickup ? "Pickup arrangements to be confirmed." :
+`City: ${city}
+Address: ${address}`}
+
+ORDER DETAILS
+${items}
+
+Subtotal: ${money(subtotal())}
+Delivery: ${fee === 0 ? "FREE" : money(fee)}
+TOTAL: ${money(subtotal() + fee)}
+
+Special Instructions:
+${note || "None"}
+
+Please confirm my order.
+Thank you!
+`;
+
+    window.open(
+      "https://wa.me/" + CONFIG.whatsapp +
+      "?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  });
+
+  updateDelivery();
+})();
+</script>
+
 </body>
 </html>

@@ -581,7 +581,58 @@ setTimeout(function(){
 </script>
 
 
+<!-- HIDE BLACK BOX + DELIVERY INSIDE WHITE BAG -->
+<script>
+setTimeout(function(){
 
+  // 1. HIDE BLACK FLOATING BOX - the one that stays on screen all time
+  document.querySelectorAll('div').forEach(function(d){
+    // Black box has Delivery + Bag (0) and is fixed at bottom
+    if(d.innerText.includes('Delivery Method') && d.innerText.includes('Bag (0)')){
+      d.style.display = 'none';
+      d.remove();
+    }
+  });
+  // Also hide any other fixed black box with Delivery
+  document.querySelectorAll('div').forEach(function(d){
+    if(d.style.position === 'fixed' && d.innerText.includes('Delivery Method')){
+      // Don't hide if it's inside Your Bag popup
+      if(!d.closest('#bag-popup') && !d.id.includes('bag')){
+        d.style.display = 'none';
+      }
+    }
+  });
+
+  // 2. ADD DELIVERY INSIDE WHITE YOUR BAG POPUP
+  function addDeliveryInsideWhiteBag(){
+    var whiteBag = document.getElementById('bag-popup') || document.querySelector('[id*="bag"]');
+    if(!whiteBag) return;
+    if(whiteBag.innerHTML.includes('Delivery Method')) return; // already there
+
+    var box = document.createElement('div');
+    box.innerHTML = `
+      <div style="border-top:2px solid #eee; margin-top:15px; padding-top:12px;">
+        <h3 style="margin:0 0 10px 0;">🚚 Delivery Method</h3>
+        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery" checked> Local Rider - Sadiqabad - Rs. 150</label>
+        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> Rahim Yar Khan - Rs. 250</label>
+        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> TCS All Pakistan - Rs. 300</label>
+        <label style="display:block; padding:8px; border:1px solid #eee; border-radius:8px; margin-bottom:6px;"><input type="radio" name="delivery"> Pickup - FREE</label>
+        <p style="font-size:12px; color:green;">Free delivery on Rs. 2,500+ orders</p>
+      </div>
+    `;
+    // Put it before ORDER ON WHATSAPP button
+    var waBtn = whiteBag.querySelector('button');
+    if(waBtn) whiteBag.insertBefore(box, waBtn);
+    else whiteBag.appendChild(box);
+  }
+
+  addDeliveryInsideWhiteBag();
+  // Run again when Bag opens
+  setInterval(addDeliveryInsideWhiteBag, 2000);
+
+}, 1000);
+</script>
+<!-- END HIDE BLACK BOX -->
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

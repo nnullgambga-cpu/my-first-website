@@ -580,6 +580,42 @@ setTimeout(function(){
 }, 1000);
 </script>
 <!-- END NAV + SEARCH FIX -->
+  <!-- FIX DUPLICATE BAG BUTTON - Keep Only 1 -->
+<script>
+setTimeout(function(){
+  // Find all Bag buttons on page
+  var allBagBtns = [];
+  document.querySelectorAll('button').forEach(function(b){
+    if(b.innerText.includes('Bag')){
+      allBagBtns.push(b);
+    }
+  });
+
+  // If more than 1 floating Bag button, remove extra ones, keep first
+  // Keep the one that has id bag-count inside it
+  var seen = 0;
+  document.querySelectorAll('button').forEach(function(b){
+    if(b.innerText.includes('Bag (') && b.style.position === 'fixed'){
+      seen++;
+      if(seen > 1){
+        b.remove(); // remove duplicate floating button
+      }
+    }
+  });
+
+  // Make sure clicking ANY Bag button opens the popup with products
+  document.querySelectorAll('button').forEach(function(b){
+    if(b.innerText.includes('Bag')){
+      b.onclick = function(){ 
+        if(typeof openBag === 'function') openBag(); 
+      };
+    }
+  });
+
+  console.log('Bag fixed, duplicates removed');
+}, 1500);
+</script>
+<!-- END BAG FIX -->
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

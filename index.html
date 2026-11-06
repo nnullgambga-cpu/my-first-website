@@ -523,6 +523,63 @@ var searchExtra = ["Functions", "Shadi Bundle", "Mehndi Pack", "Walima Pack", "S
 // If you have a search function, it will now find these words because the section id is functions-bundle
 </script>
 <!-- END FUNCTIONS + BAG -->
+  <!-- ADD DELIVERY BUTTON TO TOP NAV + FUNCTIONS TO SEARCH -->
+<script>
+setTimeout(function(){
+
+  // 1. ADD DELIVERY BUTTON TO TOP NAV
+  var nav = document.querySelector('nav') || document.querySelector('header');
+  if(nav && !nav.innerHTML.includes('Delivery')){
+    // Find Contact button/link and copy its style
+    var links = nav.querySelectorAll('a');
+    var lastLink = links[links.length - 1];
+    if(lastLink){
+      var deliveryBtn = document.createElement('a');
+      deliveryBtn.innerText = 'Delivery';
+      deliveryBtn.href = '#bag-popup';
+      deliveryBtn.onclick = function(e){
+        e.preventDefault();
+        // Scroll to delivery section if exists, else open Bag
+        var delSection = document.querySelector('section');
+        // Open Bag popup which has delivery options
+        if(typeof openBag === 'function'){ openBag(); }
+        else { window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); }
+      };
+      // Copy same style as other buttons
+      deliveryBtn.className = lastLink.className;
+      deliveryBtn.style.cssText = lastLink.style.cssText;
+      deliveryBtn.style.marginLeft = '8px';
+      lastLink.parentNode.appendChild(deliveryBtn);
+    }
+  }
+
+  // 2. ADD FUNCTIONS TO SEARCH BAR
+  var searchInput = document.querySelector('input[type="search"], input[placeholder*="Search"], input[placeholder*="search"]');
+  if(searchInput){
+    searchInput.addEventListener('input', function(){
+      var val = this.value.toLowerCase();
+      if(val.includes('func') || val.includes('shadi') || val.includes('mehndi') || val.includes('walima')){
+        // Scroll to Functions Bundle
+        var funcSection = document.getElementById('functions-bundle');
+        if(funcSection){
+          funcSection.scrollIntoView({behavior:'smooth'});
+          funcSection.style.border = '3px solid #d63384';
+        }
+      }
+    });
+  }
+
+  // Also make search list include functions if it exists in code
+  if(typeof products !== 'undefined' && Array.isArray(products)){
+    if(!products.includes('Functions')) products.push('Functions','Shadi Bundle','Mehndi Pack','Walima Pack');
+  }
+  if(typeof searchExtra !== 'undefined'){
+    console.log('Functions in search ready');
+  }
+
+}, 1000);
+</script>
+<!-- END NAV + SEARCH FIX -->
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

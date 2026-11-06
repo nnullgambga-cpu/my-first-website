@@ -388,6 +388,48 @@ experience a little botanical bliss.
   </div>
 </section>
 <!-- END GIFTS -->
+ <!-- DELIVERY SYSTEM - Local + TCS -->
+<section style="max-width:800px;margin:30px auto;padding:20px;background:#fff8f0;border:2px solid #e8a04c;border-radius:15px;font-family:Arial;">
+  <h2 style="text-align:center;color:#6b3a00;margin:0 0 10px;">🚚 Delivery Options</h2>
+  <p style="text-align:center;font-size:14px;color:#555;margin:0 0 15px;">Delivery charges pay to rider on delivery. FREE delivery on orders over Rs. 2,500</p>
+
+  <label style="display:block;background:white;padding:12px;border-radius:10px;margin-bottom:10px;border:1px solid #ddd;cursor:pointer;">
+    <input type="radio" name="delivery" value="Local Rider - Sadiqabad - Rs. 150" data-price="150" checked> 
+    <b>🏍️ Sadiqabad Local Rider</b> - Rs. 150 - Same Day Delivery <br><span style="font-size:13px;color:#777;margin-left:22px;">Pay Rs. 150 to rider on delivery</span>
+  </label>
+
+  <label style="display:block;background:white;padding:12px;border-radius:10px;margin-bottom:10px;border:1px solid #ddd;cursor:pointer;">
+    <input type="radio" name="delivery" value="Rahim Yar Khan - Rs. 250" data-price="250"> 
+    <b>🏍️ Rahim Yar Khan</b> - Rs. 250 - Next Day <br><span style="font-size:13px;color:#777;margin-left:22px;">Pay Rs. 250 to rider on delivery</span>
+  </label>
+
+  <label style="display:block;background:white;padding:12px;border-radius:10px;margin-bottom:10px;border:1px solid #ddd;cursor:pointer;">
+    <input type="radio" name="delivery" value="TCS - All Pakistan - Rs. 300" data-price="300"> 
+    <b>📦 TCS - All Pakistan (Lahore, Karachi, Islamabad, etc.)</b> - Rs. 300 - 2 to 3 Days <br><span style="font-size:13px;color:#777;margin-left:22px;">TCS rider will collect payment. Perfect for Shadi Packs from other cities.</span>
+  </label>
+
+  <p id="delivery-total" style="text-align:center;font-weight:bold;color:#6b3a00;font-size:16px;margin-top:15px;">Selected Delivery: Rs. 150</p>
+  <p style="text-align:center;font-size:13px;color:green;margin:0;">✅ If your order is Rs. 2,500+, delivery becomes FREE automatically. Just tell us on WhatsApp.</p>
+
+  <div style="text-align:center;margin-top:15px;">
+    <button onclick="orderWithDelivery()" style="background:#25D366;color:white;border:none;padding:13px 25px;border-radius:25px;font-size:16px;font-weight:bold;cursor:pointer;">Order on WhatsApp with Delivery 🚚</button>
+  </div>
+</section>
+
+<script>
+function orderWithDelivery(){
+  var selected = document.querySelector('input[name="delivery"]:checked');
+  var deliveryText = selected.value;
+  var msg = "Assalam-o-Alaikum! I want to order Tea Bombs.%0A%0ADelivery Method: " + encodeURIComponent(deliveryText) + "%0A%0APlease confirm my order.";
+  window.open("https://wa.me/923000000000?text=" + msg, "_blank");
+}
+document.querySelectorAll('input[name="delivery"]').forEach(function(r){
+  r.addEventListener('change', function(){
+    document.getElementById('delivery-total').innerText = "Selected Delivery: Rs. " + this.getAttribute('data-price');
+  });
+});
+</script>
+<!-- END DELIVERY SYSTEM --> 
 <footer>
 ZUVÉORA · BOTANICAL BLISS<br><br>
 © <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.

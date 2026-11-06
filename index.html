@@ -1,49 +1,525 @@
-:root{--g:#29392c;--c:#f7eee5;--p:#ead5c9;--gold:#a78962;--ink:#303329;--muted:#77746b;--line:#dfd1c3}*{box-sizing:border-box}body{margin:0;background:#fffaf5;color:var(--ink);font:15px 'DM Sans',sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.header{position:sticky;top:0;z-index:5;background:#fffaf5;border-bottom:1px solid #eee3d9;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:25px 'Playfair Display',serif;letter-spacing:2px;color:var(--g);display:flex;gap:9px;align-items:center}.brand small{display:block;font:8px 'DM Sans';letter-spacing:1.5px;color:var(--gold)}nav{display:flex;gap:22px;font-size:12px}.tools{display:flex;gap:14px;font-size:12px}.tools button,.menu{border:0;background:none;font-size:24px;cursor:pointer}.menu{display:none}.searchbox{display:none;background:var(--c);padding:15px 6%}.searchbox.show{display:block}.searchbox input{width:100%;padding:12px;border:1px solid var(--line)}.hero{display:grid;grid-template-columns:.9fr 1.1fr;background:#f2e4da;min-height:510px;align-items:center}.hero>div{padding:60px 12%}.hero h1,.page h1{font:clamp(43px,5.5vw,70px)/1.1 'Playfair Display';margin:18px 0}.hero h1 em,h2 em,.page h1 em{color:#9a7859}.hero p{color:var(--muted);max-width:390px;margin-bottom:28px}.hero>img{width:100%;height:510px;object-fit:cover}.btn{display:inline-block;background:var(--g);color:white;padding:12px 22px;font-size:12px;border:0;cursor:pointer}.light{background:#f8eee5;color:var(--g)}.ribbon{text-align:center;background:var(--g);color:#f5e7d9;padding:15px;font-size:9px;letter-spacing:1.4px}.section{padding:70px 7%}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.heading h2,.story h2,.summary h2{font:40px 'Playfair Display';margin:5px 0}.heading small,.page small,.hero small,.mystery small,.story small{color:var(--gold);letter-spacing:2px;font-size:10px}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:var(--c);border:1px solid #eaded2}.product img{width:100%;height:210px;object-fit:cover;display:block}.product>div{padding:15px}.product small{color:var(--gold);text-transform:uppercase;letter-spacing:1px}.product h3{font:22px 'Playfair Display';margin:5px 0}.product p{font-size:12px;color:var(--muted);min-height:36px}.product button{display:block;width:100%;margin-top:12px;padding:9px;border:1px solid var(--g);background:transparent;cursor:pointer}.product button:hover{background:var(--g);color:white}.mystery{margin:0 5% 55px;padding:48px 7%;background:var(--g);color:#fff5e9;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px}.mystery h2,.mystery h1{font:43px 'Playfair Display';margin:8px 0}.mystery p{max-width:450px;color:#e3d6c9}.mystery-art{min-height:230px;border:1px solid #b99b72;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e5cda9;font-size:32px;background:radial-gradient(#5a614b,var(--g))}.mystery-art b{font:30px 'Playfair Display';text-align:center}.mystery-art small{font-size:9px;margin-top:12px}.three{padding:35px 7% 65px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center;color:var(--gold);font-size:27px}.three h3{font:21px 'Playfair Display';color:var(--ink)}.three p,.note{font-size:12px;color:var(--muted)}.footer{background:#202d23;color:#f5eadf;padding:40px 7%;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footer>div{display:flex;flex-direction:column;gap:8px;font-size:12px}.footer>div b{color:#c9a77c}.footer>small{grid-column:1/-1;border-top:1px solid #596052;padding-top:15px}.page{text-align:center;background:#f3e5da;padding:75px 15px 45px}.page h1{font-size:55px}.page p{color:var(--muted)}.toolbar{display:flex;justify-content:space-between;gap:15px;margin-bottom:25px}#filters{display:flex;gap:7px;flex-wrap:wrap}#filters button{padding:8px 14px;border:1px solid var(--line);background:none;cursor:pointer;font-size:11px}#filters button.selected{background:var(--g);color:white}#search{padding:9px;border:1px solid var(--line)}.packages{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.packages article{background:var(--c);padding:16px;border:1px solid var(--line)}.packages h3{font:18px 'Playfair Display'}.cart-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:30px}.summary{background:var(--c);padding:25px}.summary p{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 0}.full{width:100%;margin-top:12px}#checkout,#contact-form{display:grid;gap:15px;background:var(--c);padding:25px}label{display:grid;gap:6px;font-size:12px}input,textarea{padding:11px;border:1px solid var(--line);background:#fffdfa;width:100%}.cartrow{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.cartrow img{width:75px;height:75px;object-fit:cover}.cartrow>div{flex:1}.cartrow button{font-size:11px;cursor:pointer}.story{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.story img{width:100%;height:400px;object-fit:cover}.discovery{margin-top:35px;margin-bottom:35px}.note{margin-top:20px}@media(max-width:850px){nav{gap:10px}.products{grid-template-columns:repeat(2,1fr)}.packages{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.header{flex-wrap:wrap;padding:12px 5%}.menu{display:block;margin-left:auto}.header nav{display:none;order:4;width:100%;flex-direction:column;padding:10px 0}.header nav.show{display:flex}.hero{grid-template-columns:1fr}.hero>div{padding:45px 8%}.hero>img{height:320px}.section{padding:50px 5%}.products{gap:10px}.product img{height:150px}.product>div{padding:10px}.product h3{font-size:18px}.mystery,.story,.cart-layout{grid-template-columns:1fr}.mystery{padding:30px 7%;margin:0 4% 35px}.three{grid-template-columns:1fr}.footer{grid-template-columns:1fr 1fr}.footer .brand{grid-column:1/-1}.toolbar{flex-direction:column}.page h1{font-size:43px}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZUVÉORA | Botanical Tea Boutique</title>
+<meta name="description" content="Discover the botanical world of ZUVÉORA. Explore our premium tea bombs and botanical blends.">
 
-// Shared features. Edit products.js for products and config.js for contact details.
-const money=n=>'Rs. '+Number(n).toLocaleString('en-PK');
-const cart=()=>JSON.parse(localStorage.getItem('zuveora-cart')||'[]');
-const save=c=>{localStorage.setItem('zuveora-cart',JSON.stringify(c));document.querySelectorAll('.count').forEach(e=>e.textContent=c.reduce((s,x)=>s+x.qty,0));};
-function add(id){let c=cart(),x=c.find(i=>i.id===id);x?x.qty++:c.push({id,qty:1});save(c);alert('Added to your bag!');}
-function card(p){return `<article class="product"><img src="${p.image}" alt="${p.name}"><div><small>${p.category}</small><h3>${p.name}</h3><p>${p.ingredients}</p><b>${money(p.price)}</b><button onclick="add('${p.id}')">Add to bag +</button></div></article>`;}
-function draw(id,list){let e=document.getElementById(id);if(e)e.innerHTML=list.length?list.map(card).join(''):'<p>No products found.</p>';}
-function qty(id,n){let c=cart(),x=c.find(i=>i.id===id);if(x)x.qty+=n;save(c.filter(i=>i.qty>0));location.reload();}
-function removeItem(id){save(cart().filter(i=>i.id!==id));location.reload();}
-document.addEventListener('DOMContentLoaded',()=>{
-let h=document.getElementById('header');if(h)h.innerHTML=`<header class="header"><a class="brand" href="index.html">✿ <span>${SETTINGS.brand}<small>A WORLD OF BOTANICAL BLISS</small></span></a><button class="menu" id="menu">☰</button><nav id="nav"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="discovery.html">Discovery Box</a><a href="story.html">Our Story</a><a href="contact.html">Contact</a></nav><div class="tools"><button id="search-open">⌕</button><a href="cart.html">Bag (<span class="count">${cart().reduce((s,x)=>s+x.qty,0)}</span>)</a></div></header><div id="searchbox" class="searchbox"><input id="global-search" placeholder="Search flavours…"><div id="results"></div></div>`;
-let f=document.getElementById('footer');if(f)f.innerHTML=`<footer class="footer"><a class="brand" href="index.html">✿ ${SETTINGS.brand}</a><div><b>Explore</b><a href="shop.html">Shop</a><a href="discovery.html">Discovery Box</a><a href="story.html">Our Story</a></div><div><b>Help</b><a href="contact.html">Contact</a><a href="cart.html">Shopping bag</a></div><small>© ${new Date().getFullYear()} ${SETTINGS.brand}. Where nature meets elegance.</small></footer>`;
-if(document.getElementById('menu'))document.getElementById('menu').onclick=()=>document.getElementById('nav').classList.toggle('show');if(document.getElementById('search-open'))document.getElementById('search-open').onclick=()=>document.getElementById('searchbox').classList.toggle('show');if(document.getElementById('global-search'))document.getElementById('global-search').oninput=e=>{let q=e.target.value.toLowerCase();document.getElementById('results').innerHTML=PRODUCTS.filter(p=>(p.name+' '+p.ingredients).toLowerCase().includes(q)).map(p=>`<p><a href="shop.html">${p.name} — ${money(p.price)}</a></p>`).join('');};
-let count=document.querySelectorAll('.count');count.forEach(e=>e.textContent=cart().reduce((s,x)=>s+x.qty,0));draw('featured',PRODUCTS);
-if(document.getElementById('all-products')){let cat='All',search=document.getElementById('search');function render(){draw('all-products',PRODUCTS.filter(p=>(cat==='All'||p.category===cat)&&(!search||(p.name+' '+p.ingredients).toLowerCase().includes(search.value.toLowerCase()))));}document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{cat=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('selected',x===b));render();});if(search)search.oninput=render;render();let pack=document.getElementById('packages');if(pack)pack.innerHTML=PACKAGES.map(p=>`<article><small>${p.quantity}</small><h3>${p.name}</h3><b>${money(p.price)}</b></article>`).join('');}
-let ci=document.getElementById('cart-items');if(ci){let c=cart(),t=0;ci.innerHTML=c.length?c.map(i=>{let p=PRODUCTS.find(x=>x.id===i.id);if(!p)return '';t+=p.price*i.qty;return `<div class="cartrow"><img src="${p.image}"><div><b>${p.name}</b><p>${money(p.price)} each</p><button onclick="qty('${p.id}',-1)">−</button> ${i.qty} <button onclick="qty('${p.id}',1)">+</button> <button onclick="removeItem('${p.id}')">Remove</button></div><b>${money(p.price*i.qty)}</b></div>`;}).join(''):'Your bag is empty. <a href="shop.html">Shop now</a>';document.getElementById('subtotal').textContent=money(t);document.getElementById('total').textContent=money(t);}
-let co=document.getElementById('checkout-items');if(co){let c=cart(),t=0;co.innerHTML=c.map(i=>{let p=PRODUCTS.find(x=>x.id===i.id);if(!p)return '';t+=p.price*i.qty;return `<p>${p.name} × ${i.qty} — ${money(p.price*i.qty)}</p>`;}).join('')||'Your bag is empty';document.getElementById('checkout-total').textContent=money(t);}
-let cf=document.getElementById('checkout');if(cf)cf.onsubmit=e=>{e.preventDefault();if(!SETTINGS.whatsapp){alert('Add your WhatsApp number in config.js first.');return;}let d=new FormData(cf),c=cart(),items=c.map(i=>{let p=PRODUCTS.find(x=>x.id===i.id);return p?`${p.name} x ${i.qty} — ${money(p.price*i.qty)}`:''}).join('\n'),t=c.reduce((s,i)=>s+(PRODUCTS.find(p=>p.id===i.id)?.price||0)*i.qty,0),msg=`Hello ZUVÉORA, I would like to order:\n${items}\nTotal: ${money(t)}\nName: ${d.get('name')}\nPhone: ${d.get('phone')}\nAddress: ${d.get('address')}\nNotes: ${d.get('notes')||'None'}`;window.open('https://wa.me/'+SETTINGS.whatsapp+'?text='+encodeURIComponent(msg),'_blank');};
-let links=document.getElementById('contact-links');if(links)links.innerHTML=(SETTINGS.whatsapp?`<p><a href="https://wa.me/${SETTINGS.whatsapp}">WhatsApp ↗</a></p>`:'')+(SETTINGS.instagram?`<p><a href="${SETTINGS.instagram}">Instagram ↗</a></p>`:'')+(SETTINGS.email?`<p><a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a></p>`:'')||'Contact details coming soon.';
-let form=document.getElementById('contact-form');if(form)form.onsubmit=e=>{e.preventDefault();if(!SETTINGS.email){alert('Add your email in config.js first.');return;}let d=new FormData(form);location.href=`mailto:${SETTINGS.email}?subject=Website message from ${d.get('name')}&body=${encodeURIComponent(d.get('message')+' From: '+d.get('sender'))}`;};
-});
+<style>
+:root {
+  --cream:#fbf7f0;
+  --pink:#ead8d2;
+  --green:#354d3d;
+  --gold:#b69a69;
+  --ink:#282b25;
+  --white:#fffefa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;
+ background:var(--cream);
+ color:var(--ink);
+}
+h1,h2,h3,.brand,.serif{
+ font-family:Georgia,serif;
+ font-weight:400;
+}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font:inherit}
+.topbar{
+ background:var(--green);
+ color:white;
+ text-align:center;
+ padding:10px;
+ font-size:11px;
+ letter-spacing:2px;
+}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#fbf7f0ee;
+ border-bottom:1px solid #e8dfd2;
+}
+.nav{
+ max-width:1250px;margin:auto;
+ padding:18px 5%;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:20px;
+}
+.brand{
+ font-size:27px;
+ letter-spacing:5px;
+ color:var(--green);
+}
+.brand small{
+ display:block;text-align:center;
+ font:9px Arial;letter-spacing:4px;
+ margin-top:4px;
+}
+.navlinks{
+ display:flex;gap:24px;
+ font-size:12px;letter-spacing:1px;
+}
+.navlinks a:hover{color:var(--gold)}
+.navright{display:flex;gap:15px;align-items:center}
+.navright button{
+ background:none;border:0;color:var(--green);
+}
+.hero{
+ min-height:590px;
+ background:linear-gradient(100deg,#283e32dd,#283e3233),
+ linear-gradient(135deg,#788d70,#d9b8a8,#e9d8c5);
+ display:flex;align-items:center;
+ padding:70px 9%;
+ color:white;
+}
+.hero-content{max-width:600px}
+.eyebrow{
+ text-transform:uppercase;
+ letter-spacing:4px;font-size:11px;
+ margin-bottom:24px;
+}
+.hero h1{font-size:clamp(48px,7vw,82px);line-height:1.08}
+.hero p{
+ max-width:430px;line-height:1.9;
+ margin:24px 0 32px;font-size:14px;
+}
+.btn{
+ display:inline-block;
+ padding:16px 27px;
+ background:var(--green);
+ color:white;border:1px solid var(--green);
+ font-size:11px;letter-spacing:2px;
+ text-transform:uppercase;
+}
+.btn:hover{background:#50694f}
+.btn.light{background:transparent;border-color:white}
+.section{
+ max-width:1250px;margin:auto;
+ padding:85px 5%;
+}
+.center{text-align:center}
+.section-title{
+ font-size:clamp(32px,4vw,47px);
+ color:var(--green);margin-bottom:15px;
+}
+.subtitle{
+ color:#827d70;font-size:13px;
+ line-height:1.8;
+}
+.products{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:22px;margin-top:45px;
+}
+.product-card{background:var(--white);padding-bottom:24px}
+.product-art{
+ height:245px;
+ display:flex;align-items:center;
+ justify-content:center;
+ position:relative;overflow:hidden;
+}
+.product-art:before{
+ content:"";position:absolute;
+ width:180px;height:180px;
+ border-radius:50%;background:#ffffff65;
+}
+.jar{
+ z-index:1;width:105px;height:145px;
+ border:2px solid #ffffffaa;
+ border-radius:18px 18px 25px 25px;
+ background:#ffffff48;
+ box-shadow:0 12px 30px #0002;
+ display:flex;align-items:center;
+ justify-content:center;
+ text-align:center;
+ font-family:Georgia,serif;
+ color:#354d3d;
+ padding:10px;
+ font-size:15px;
+}
+.rose{background:linear-gradient(140deg,#d6a7a7,#f1d8d1)}
+.citrus{background:linear-gradient(140deg,#d8c98a,#b5c4a1)}
+.spice{background:linear-gradient(140deg,#c38b57,#ead2a4)}
+.pure{background:linear-gradient(140deg,#b9c8b4,#e9e5d5)}
+.product-info{padding:20px 16px 0;text-align:center}
+.product-info h3{font-size:22px;color:var(--green)}
+.product-info p{
+ font-size:12px;color:#827d70;
+ line-height:1.7;margin:10px 0;
+ min-height:40px;
+}
+.price{color:var(--green);font-weight:bold;font-size:14px}
+.product-info select{
+ margin:15px 0 12px;padding:10px;
+ width:100%;border:1px solid #ded7c9;
+ background:white;color:var(--ink);
+}
+.add{
+ width:100%;padding:13px;
+ border:0;background:var(--green);
+ color:white;font-size:10px;
+ letter-spacing:2px;
+}
+.add:hover{background:var(--gold)}
+.discovery{
+ background:#e8ddd0;
+ display:grid;grid-template-columns:1fr 1fr;
+ align-items:center;gap:50px;
+ padding:70px 9%;
+}
+.discovery-art{
+ min-height:320px;
+ background:linear-gradient(135deg,#a8b69b,#e4c9bd);
+ display:grid;place-items:center;
+ font-size:70px;
+}
+.discovery h2{font-size:43px;color:var(--green)}
+.discovery p{line-height:1.9;font-size:13px;margin:20px 0}
+.story{max-width:750px;margin:auto;text-align:center}
+.story p{line-height:2;color:#777367;font-size:14px;margin-top:22px}
+.contact{
+ background:var(--green);color:white;
+ text-align:center;padding:75px 20px;
+}
+.contact h2{font-size:42px}
+.contact p{font-size:13px;line-height:2;margin:18px}
+.contact a{color:#ead7b7}
+footer{
+ padding:35px 5%;text-align:center;
+ font-size:11px;letter-spacing:1px;
+ color:#777;
+}
+.cart-panel{
+ position:fixed;inset:0;background:#0007;
+ z-index:30;display:none;justify-content:flex-end;
+}
+.cart-panel.open{display:flex}
+.cart{
+ background:var(--cream);width:min(430px,100%);
+ height:100%;padding:28px;overflow:auto;
+}
+.cart-head{display:flex;justify-content:space-between}
+.cart-head h2{font-size:30px;color:var(--green)}
+.cart-head button{border:0;background:none;font-size:25px}
+.cart-item{
+ padding:18px 0;border-bottom:1px solid #ddd;
+ font-size:13px;line-height:2;
+}
+.cart-item button{border:0;background:none;color:#995c50}
+.total{padding:24px 0;font-weight:bold}
+.checkout{width:100%}
+.search{
+ width:100%;max-width:450px;
+ padding:14px;border:1px solid #ddd;
+ background:white;margin:30px auto 0;
+ display:block;
+}
+.empty{padding:25px;text-align:center;color:#888}
 
-// ADD YOUR CONTACT DETAILS HERE LATER. WhatsApp: digits only, with country code.
-const SETTINGS={brand:'ZUVÉORA',whatsapp:'',instagram:'',email:''};
+/* NEW - Quantity buttons */
+.qty-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+.qty-btn{
+  width:28px;height:28px;
+  border:1px solid #354d3d !important;
+  border-radius:50%;
+  color:#354d3d !important;
+  font-size:16px;
+  line-height:1;
+  display:flex;align-items:center;justify-content:center;
+}
+.qty-btn:hover{background:#354d3d;color:white !important}
+.qty-num{font-weight:bold;min-width:18px;text-align:center}
+.remove-btn{margin-left:auto;font-size:11px;letter-spacing:1px}
 
-// EASY PRODUCT EDITING: copy a product object to add another. Categories: Floral, Fresh, Warm, Herbal.
-const PRODUCTS=[
-{id:'rose-bloom',name:'Rose Bloom',ingredients:'Rose, Hibiscus, Chamomile',category:'Floral',price:299,image:'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=900&q=80'},
-{id:'citrus-bliss',name:'Citrus Bliss',ingredients:'Lemon, Mint, Ginger',category:'Fresh',price:299,image:'https://images.unsplash.com/photo-1544787219-7f47eef5a6a8?auto=format&fit=crop&w=900&q=80'},
-{id:'golden-spice',name:'Golden Spice',ingredients:'Cinnamon, Cardamom, Apple',category:'Warm',price:299,image:'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80'},
-{id:'pure-essence',name:'Pure Essence',ingredients:'Herbal blend',category:'Herbal',price:299,image:'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80'}
+@media(max-width:850px){
+ .products{grid-template-columns:repeat(2,1fr)}
+ .navlinks{gap:12px}
+ .discovery{gap:20px}
+}
+@media(max-width:560px){
+ .nav{flex-wrap:wrap;justify-content:center}
+ .navlinks{width:100%;justify-content:center;flex-wrap:wrap;font-size:10px}
+ .hero{min-height:500px;padding:55px 7%}
+ .products{gap:12px}
+ .product-art{height:185px}
+ .jar{width:85px;height:120px}
+ .discovery{grid-template-columns:1fr;padding:45px 7%}
+ .discovery h2{font-size:35px}
+ .section{padding:60px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+A BOTANICAL EXPERIENCE · MADE TO BE DISCOVERED
+</div>
+
+<header>
+<nav class="nav">
+<a href="#home" class="brand">
+ZUVÉORA
+<small>BOTANICAL BLISS</small>
+</a>
+
+<div class="navlinks">
+<a href="#home">HOME</a>
+<a href="#shop">SHOP</a>
+<a href="#discovery">DISCOVER</a>
+<a href="#story">OUR STORY</a>
+<a href="#contact">CONTACT</a>
+</div>
+
+<div class="navright">
+<button onclick="document.getElementById('search').focus()">⌕</button>
+<button onclick="openCart()">BAG (<span id="count">0</span>)</button>
+</div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="eyebrow">THE ART OF BOTANICAL LIVING</div>
+<h1>A World of<br>Botanical Bliss.</h1>
+<p>
+Discover a collection inspired by nature,
+beautiful botanicals and the art of slowing down.
+A little moment of luxury in every cup.
+</p>
+<a class="btn light" href="#shop">EXPLORE COLLECTION</a>
+</div>
+</section>
+
+<section class="section center" id="shop">
+<div class="eyebrow">OUR COLLECTION</div>
+<h2 class="section-title">Discover Your Favourite</h2>
+<p class="subtitle">A botanical journey, thoughtfully brought together.</p>
+
+<input id="search" class="search"
+placeholder="Search your favourite blend..."
+oninput="renderProducts()">
+
+<div class="products" id="products"></div>
+</section>
+
+<section class="discovery" id="discovery">
+<div class="discovery-art">✿</div>
+<div>
+<div class="eyebrow">A LITTLE BOX OF WONDER</div>
+<h2>The Discovery Box</h2>
+<p>
+Explore the botanical world of ZUVÉORA with
+a curated selection of our signature flavours.
+Find a new favourite and enjoy the experience.
+</p>
+<a class="btn" href="#contact">ENQUIRE ABOUT THE BOX</a>
+</div>
+</section>
+
+<section class="section">
+<div class="story" id="story">
+<div class="eyebrow">THE STORY OF ZUVÉORA</div>
+<h2 class="section-title">Nature, With a Touch of Elegance.</h2>
+<p>
+ZUVÉORA is a botanical-inspired brand created
+around beautiful flavours and thoughtful experiences.
+We believe that the smallest moments can become
+something special. Discover our collection and
+experience a little botanical bliss.
+</p>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="eyebrow">WE WOULD LOVE TO HEAR FROM YOU</div>
+<h2>Let's Connect.</h2>
+<p>Questions, orders or collaborations?</p>
+<p id="contactDetails"></p>
+<a class="btn light" href="#" id="whatsapp">CONTACT US ON WHATSAPP</a>
+</section>
+</main>
+
+<footer>
+ZUVÉORA · BOTANICAL BLISS<br><br>
+© <span id="year"></span> ZUVÉORA. ALL RIGHTS RESERVED.
+</footer>
+
+<div class="cart-panel" id="cartPanel">
+<div class="cart">
+<div class="cart-head">
+<h2>Your Bag</h2>
+<button onclick="closeCart()">×</button>
+</div>
+<div id="cartItems"></div>
+<div class="total" id="total"></div>
+<button class="btn checkout" onclick="checkout()">ORDER ON WHATSAPP</button>
+</div>
+</div>
+
+<script>
+const SETTINGS = {
+  whatsapp: "",
+  email: "",
+  instagram: ""
+};
+
+const PACKS = [
+  {name:"1 Tea Bomb",price:299},
+  {name:"Box of 2",price:749},
+  {name:"Box of 4",price:1499},
+  {name:"Box of 6",price:2199},
+  {name:"Box of 12",price:3999}
 ];
-const PACKAGES=[{name:'Single Tea Bomb',quantity:'1 tea bomb',price:299},{name:'Duo Box',quantity:'2 tea bombs',price:749},{name:'Four-Piece Box',quantity:'4 tea bombs',price:1499},{name:'Six-Piece Box',quantity:'6 tea bombs',price:2199},{name:'Twelve-Piece Box',quantity:'12 tea bombs',price:3999}];
 
-ZUVEORA EASY-EDIT WEBSITE
+const PRODUCTS = [
+  {id:1,name:"Rose Bloom",description:"Rose · Hibiscus · Chamomile",color:"rose",symbol:"ROSE BLOOM"},
+  {id:2,name:"Citrus Bliss",description:"Lemon · Mint · Ginger",color:"citrus",symbol:"CITRUS BLISS"},
+  {id:3,name:"Golden Spice",description:"Cinnamon · Cardamom · Apple",color:"spice",symbol:"GOLDEN SPICE"},
+  {id:4,name:"Pure Essence",description:"Our sugar-free botanical blend",color:"pure",symbol:"PURE ESSENCE"}
+];
 
-UPLOAD: Upload all files in this folder to the ROOT of your GitHub repository. Replace the old index.html and add the other files, then commit.
+let cart = [];
 
-ADD A PRODUCT: Open products.js. Copy one product object inside PRODUCTS and change id (unique lowercase-hyphen name), name, ingredients, category, price and image. Categories: Floral, Fresh, Warm, Herbal. For your own photo, upload it to an images folder and use image:'images/my-photo.jpg'.
+function money(amount){
+ return "Rs. " + amount.toLocaleString("en-PK");
+}
 
-CHANGE PRICES: Edit price in products.js. Product prices and box prices are both there.
+function renderProducts(){
+ const query=document.getElementById("search").value.toLowerCase();
+ const container=document.getElementById("products");
+ const filtered=PRODUCTS.filter(p=>
+  (p.name+" "+p.description).toLowerCase().includes(query)
+ );
+ container.innerHTML=filtered.map(p=>`
+ <article class="product-card">
+  <div class="product-art ${p.color}">
+   <div class="jar">${p.symbol}</div>
+  </div>
+  <div class="product-info">
+   <h3>${p.name}</h3>
+   <p>${p.description}</p>
+   <div class="price">From ${money(PACKS[0].price)}</div>
+   <select id="pack-${p.id}">
+    ${PACKS.map((pack,i)=>`<option value="${i}">${pack.name} — ${money(pack.price)}</option>`).join("")}
+   </select>
+   <button class="add" onclick="addToCart(${p.id})">ADD TO BAG</button>
+  </div>
+ </article>
+ `).join("") || '<div class="empty">No products found.</div>';
+}
 
-ADD CONTACTS LATER: Open config.js. Set whatsapp:'923001234567' (your own number, digits only with country code), instagram:'https://instagram.com/yourpage', email:'you@example.com'. WhatsApp checkout and contact links use these settings.
+function addToCart(id){
+ const product=PRODUCTS.find(p=>p.id===id);
+ const selected=Number(document.getElementById("pack-"+id).value);
+ const pack=PACKS[selected];
+ // Check if same product + pack already in cart
+ const existing = cart.find(item => item.id===id && item.pack===pack.name);
+ if(existing){
+   existing.qty += 1;
+ } else {
+   cart.push({id:id, name:product.name, pack:pack.name, price:pack.price, qty:1});
+ }
+ updateCart();
+ openCart();
+}
 
-INCLUDED: Home, Shop, Discovery Box, Our Story, Contact, Shopping Bag, Checkout; product search, category filters, cart and WhatsApp order summary.
+function updateCart(){
+ const totalQty = cart.reduce((sum,item)=>sum+item.qty,0);
+ document.getElementById("count").textContent=totalQty;
 
-LIMITATIONS: WhatsApp checkout works only after adding your number. Email contact works after adding your email. This static GitHub Pages site does not process card payments or store orders in a database. Discovery Box price is not set pending confirmation. Verify all sample photos, ingredients and prices before publishing.
+ document.getElementById("cartItems").innerHTML=
+ cart.length ? cart.map((item,i)=>`
+ <div class="cart-item">
+  <strong>${item.name}</strong><br>
+  ${item.pack}<br>
+  ${money(item.price)} each · ${money(item.price * item.qty)} total
+  <div class="qty-row">
+    <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+    <span class="qty-num">${item.qty}</span>
+    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+    <button class="remove-btn" onclick="removeItem(${i})">REMOVE</button>
+  </div>
+ </div>
+ `).join("") : '<div class="empty">Your bag is waiting for something lovely.</div>';
+
+ const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+ document.getElementById("total").textContent="TOTAL: "+money(total);
+}
+
+function changeQty(i, delta){
+  cart[i].qty += delta;
+  if(cart[i].qty <= 0){
+    cart.splice(i,1);
+  }
+  updateCart();
+}
+
+function removeItem(i){
+ cart.splice(i,1);
+ updateCart();
+}
+
+function openCart(){
+ document.getElementById("cartPanel").classList.add("open");
+}
+function closeCart(){
+ document.getElementById("cartPanel").classList.remove("open");
+}
+
+function checkout(){
+ if(!cart.length){
+  alert("Your bag is empty!");
+  return;
+ }
+ if(!SETTINGS.whatsapp){
+  alert("Please add your WhatsApp number in the SETTINGS section of the code first.");
+  return;
+ }
+ const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+ const lines=cart.map(item=>
+  item.qty + "x " + item.name+" - "+item.pack+" - "+money(item.price * item.qty)
+ ).join("\n");
+ const message=
+ "Hello ZUVÉORA! I would like to place an order:\n\n"+
+ lines+"\n\nTotal: "+money(total)+
+ "\n\nPlease confirm my order.";
+ window.open(
+  "https://wa.me/"+SETTINGS.whatsapp+
+  "?text="+encodeURIComponent(message),
+  "_blank"
+ );
+}
+
+function setupContacts(){
+ let details=[];
+ if(SETTINGS.email) details.push("Email: "+SETTINGS.email);
+ if(SETTINGS.instagram) details.push("Instagram: "+SETTINGS.instagram);
+ document.getElementById("contactDetails").textContent=details.join(" | ");
+ const whatsapp=document.getElementById("whatsapp");
+ if(SETTINGS.whatsapp){
+  whatsapp.href="https://wa.me/"+SETTINGS.whatsapp;
+ }else{
+  whatsapp.onclick=function(e){
+   e.preventDefault();
+   alert("Add your WhatsApp number in SETTINGS first.");
+  };
+ }
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();
+updateCart();
+setupContacts();
+</script>
+
+</body>
+</html>
